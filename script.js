@@ -3,6 +3,30 @@ document.getElementById('year').textContent = new Date().getFullYear();
 const BASE_PRICE = 30;
 const PERSONALISE_UPCHARGE = 5;
 
+/* ---------- Bag style toggle: Ibiza Bag vs Coming Soon placeholder ---------- */
+const orderFormRest = document.getElementById('orderFormRest');
+const comingSoonNote = document.getElementById('comingSoonNote');
+const bagStyleRadios = document.querySelectorAll('input[name="bag_style"]');
+
+function updateBagStyleView(){
+  const isComingSoon = document.querySelector('input[name="bag_style"]:checked').value === 'coming_soon';
+  orderFormRest.hidden = isComingSoon;
+  comingSoonNote.hidden = !isComingSoon;
+
+  // Fields inside the hidden section shouldn't block submission or count
+  // toward validation while a "coming soon" style is selected.
+  orderFormRest.querySelectorAll('[required]').forEach(el => {
+    el.dataset.wasRequired = el.dataset.wasRequired || (el.required ? 'true' : 'false');
+  });
+  if (isComingSoon) {
+    orderFormRest.querySelectorAll('input, textarea').forEach(el => { el.disabled = true; });
+  } else {
+    orderFormRest.querySelectorAll('input, textarea').forEach(el => { el.disabled = false; });
+  }
+}
+bagStyleRadios.forEach(r => r.addEventListener('change', updateBagStyleView));
+updateBagStyleView();
+
 /* ---------- Order type toggle: order as is vs personalise (+£5) ---------- */
 const personaliseFields = document.getElementById('personaliseFields');
 const personaliseSummaryRow = document.getElementById('personaliseSummaryRow');

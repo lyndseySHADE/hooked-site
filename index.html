@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HOOKED | The Ibiza Bag</title>
-<meta name="description" content="Handmade to order crochet bags in your favourite colours. The Ibiza Bag by HOOKED.">
+<title>HOOKED | Handmade Crochet Bags</title>
+<meta name="description" content="Handmade to order crochet bags in your favourite colours, by HOOKED.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -17,6 +17,7 @@
   <input type="text" name="name">
   <input type="email" name="email">
   <input type="tel" name="phone">
+  <input type="text" name="bag_style">
   <input type="text" name="order_type">
   <textarea name="customisation"></textarea>
   <input type="file" name="inspiration" multiple>
@@ -33,7 +34,7 @@
   <div class="wrap topbar__inner">
     <a href="#top" class="logo"><img src="assets/hooked-logo.png" alt="HOOKED" class="logo__img"></a>
     <nav class="nav">
-      <a href="#about">The Bag</a>
+      <a href="#about">Our Bags</a>
       <a href="#order">Order</a>
       <a href="#faq">FAQ</a>
     </nav>
@@ -50,7 +51,7 @@
     <div class="wrap hero__inner">
       <div class="hero__copy">
         <p class="eyebrow">Handmade in small batches</p>
-        <h1 class="hero__title">The Ibiza Bag</h1>
+        <h1 class="hero__title">Bags Worth Getting Hooked On</h1>
         <p class="hero__sub">Handmade to order, in your favourite colours.</p>
         <a href="#order" class="btn btn--primary">Order Yours</a>
       </div>
@@ -72,7 +73,7 @@
   <!-- ABOUT -->
   <section id="about" class="about">
     <div class="wrap">
-      <p class="eyebrow eyebrow--center">About the bag</p>
+      <p class="eyebrow eyebrow--center">Our bags</p>
       <h2 class="section-title">Made by hand. Made for summer.</h2>
 
       <div class="gallery">
@@ -127,11 +128,35 @@
   <!-- ORDER -->
   <section id="order" class="order">
     <div class="wrap wrap--narrow">
-      <p class="eyebrow eyebrow--center">Order your ibiza bag</p>
+      <p class="eyebrow eyebrow--center">Order online</p>
       <h2 class="section-title section-title--center">Let's make it yours</h2>
       <p class="order__intro">View the bag, tell me your dream design, upload inspiration, then pay securely. That's it.</p>
 
       <form id="orderForm" class="order-card" novalidate>
+
+        <div class="field">
+          <label>Choose your style</label>
+          <div class="radio-group">
+            <label class="radio-pill">
+              <input type="radio" name="bag_style" value="ibiza" checked>
+              <span>The Ibiza Bag · £30</span>
+            </label>
+            <label class="radio-pill">
+              <input type="radio" name="bag_style" value="coming_soon">
+              <span>New Style · Coming Soon</span>
+            </label>
+          </div>
+        </div>
+
+        <div id="comingSoonNote" class="coming-soon-note" hidden>
+          <div class="coming-soon-note__placeholder" aria-hidden="true">
+            <span>📷</span>
+            <span>Photo coming soon</span>
+          </div>
+          <p>This style isn't ready to order just yet. Follow <a href="https://www.instagram.com/HOOKED.by.LM" target="_blank" rel="noopener">@HOOKED.by.LM</a> to be the first to know when it drops.</p>
+        </div>
+
+        <div id="orderFormRest">
 
         <div class="field-row">
           <div class="field">
@@ -233,6 +258,8 @@
         </button>
         <p class="pay-methods">Apple Pay · Google Pay · Debit / Credit Card, via Stripe</p>
         <p id="formError" class="form-error" hidden></p>
+
+        </div>
       </form>
     </div>
   </section>

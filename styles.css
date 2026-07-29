@@ -160,7 +160,7 @@ a{ color: inherit; }
 .hero__title{
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(40px, 8vw, 68px);
+  font-size: clamp(36px, 6.5vw, 58px);
   line-height: 1.02;
   margin: 6px 0 4px;
   position: relative;
@@ -376,6 +376,30 @@ input:focus, textarea:focus{ outline: 2.5px solid var(--red); border-color: var(
 
 .shipping-fields{ display:flex; flex-direction:column; gap: 16px; }
 .personalise-fields{ display:flex; flex-direction:column; gap: 20px; }
+
+.coming-soon-note{
+  background: var(--sand);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  text-align:center;
+}
+.coming-soon-note__placeholder{
+  aspect-ratio: 4/3;
+  max-width: 260px;
+  margin: 0 auto 16px;
+  border-radius: var(--radius-sm);
+  border: 2px dashed rgba(36,29,26,0.25);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap: 6px;
+  color: var(--ink-soft);
+  font-size: 14px;
+}
+.coming-soon-note__placeholder span:first-child{ font-size: 32px; }
+.coming-soon-note p{ margin: 0; color: var(--ink-soft); line-height: 1.6; }
+.coming-soon-note p a{ color: var(--pink-deep); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
 .collection-note{
   background: var(--sand);
   border-radius: var(--radius-sm);
