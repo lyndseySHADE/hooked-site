@@ -2,6 +2,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
 
 const BASE_PRICE = 30;
 const PERSONALISE_UPCHARGE = 5;
+const SHIPPING_COST = 3.99;
 
 /* ---------- Bag style toggle: Ibiza Bag vs Coming Soon placeholder ---------- */
 const orderFormRest = document.getElementById('orderFormRest');
@@ -13,11 +14,6 @@ function updateBagStyleView(){
   orderFormRest.hidden = isComingSoon;
   comingSoonNote.hidden = !isComingSoon;
 
-  // Fields inside the hidden section shouldn't block submission or count
-  // toward validation while a "coming soon" style is selected.
-  orderFormRest.querySelectorAll('[required]').forEach(el => {
-    el.dataset.wasRequired = el.dataset.wasRequired || (el.required ? 'true' : 'false');
-  });
   if (isComingSoon) {
     orderFormRest.querySelectorAll('input, textarea').forEach(el => { el.disabled = true; });
   } else {
@@ -27,49 +23,68 @@ function updateBagStyleView(){
 bagStyleRadios.forEach(r => r.addEventListener('change', updateBagStyleView));
 updateBagStyleView();
 
-/* ---------- Order type toggle: order as is vs personalise (+£5) ---------- */
+/* ---------- Order type (as is vs personalise +£5) and delivery (shipping +£3.99 vs collection) ---------- */
 const personaliseFields = document.getElementById('personaliseFields');
 const personaliseSummaryRow = document.getElementById('personaliseSummaryRow');
+const shippingSummaryRow = document.getElementById('shippingSummaryRow');
 const orderTotalEl = document.getElementById('orderTotal');
 const payBtnText = document.getElementById('payBtnText');
 const customisationInput = document.getElementById('customisation');
 const orderTypeRadios = document.querySelectorAll('input[name="order_type"]');
 
-function currentTotal(){
-  const isPersonalise = document.querySelector('input[name="order_type"]:checked').value === 'personalise';
-  return isPersonalise ? BASE_PRICE + PERSONALISE_UPCHARGE : BASE_PRICE;
-}
-
-function updateOrderTypeView(){
-  const isPersonalise = document.querySelector('input[name="order_type"]:checked').value === 'personalise';
-  personaliseFields.hidden = !isPersonalise;
-  personaliseSummaryRow.hidden = !isPersonalise;
-  customisationInput.required = isPersonalise;
-
-  const total = currentTotal();
-  orderTotalEl.textContent = `£${total}.00`;
-  payBtnText.textContent = `Pay & Place Order · £${total}`;
-}
-orderTypeRadios.forEach(r => r.addEventListener('change', updateOrderTypeView));
-updateOrderTypeView();
-
-/* ---------- Delivery method toggle ---------- */
 const shippingFields = document.getElementById('shippingFields');
 const collectionNote = document.getElementById('collectionNote');
 const deliveryRadios = document.querySelectorAll('input[name="delivery_method"]');
 
+function formatTotal(amount){
+  // Whole pounds show without decimals in the button (£30), summary always shows pence (£30.00)
+  return amount.toFixed(2);
+}
+
+function isPersonaliseSelected(){
+  return document.querySelector('input[name="order_type"]:checked').value === 'personalise';
+}
+function isShippingSelected(){
+  return document.querySelector('input[name="delivery_method"]:checked').value === 'shipping';
+}
+
+function currentTotal(){
+  let total = BASE_PRICE;
+  if (isPersonaliseSelected()) total += PERSONALISE_UPCHARGE;
+  if (isShippingSelected()) total += SHIPPING_COST;
+  return total;
+}
+
+function updateSummary(){
+  const total = currentTotal();
+  orderTotalEl.textContent = `£${formatTotal(total)}`;
+  payBtnText.textContent = `Pay & Place Order · £${formatTotal(total)}`;
+}
+
+function updateOrderTypeView(){
+  const isPersonalise = isPersonaliseSelected();
+  personaliseFields.hidden = !isPersonalise;
+  personaliseSummaryRow.hidden = !isPersonalise;
+  customisationInput.required = isPersonalise;
+  updateSummary();
+}
+orderTypeRadios.forEach(r => r.addEventListener('change', updateOrderTypeView));
+
 function updateDeliveryView(){
-  const value = document.querySelector('input[name="delivery_method"]:checked').value;
-  const isShipping = value === 'shipping';
+  const isShipping = isShippingSelected();
   shippingFields.hidden = !isShipping;
+  shippingSummaryRow.hidden = !isShipping;
   collectionNote.hidden = isShipping;
   // shipping address only required when shipping is selected
   ['address_line1','town_city','postcode'].forEach(id=>{
     const el = document.getElementById(id);
     if(el) el.required = isShipping;
   });
+  updateSummary();
 }
 deliveryRadios.forEach(r => r.addEventListener('change', updateDeliveryView));
+
+updateOrderTypeView();
 updateDeliveryView();
 
 /* ---------- Inspiration image preview ---------- */
@@ -110,7 +125,8 @@ form.addEventListener('submit', async (e) => {
     return;
   }
 
-  const isPersonalise = document.querySelector('input[name="order_type"]:checked').value === 'personalise';
+  const isPersonalise = isPersonaliseSelected();
+  const isShipping = isShippingSelected();
   const total = currentTotal();
 
   payBtn.disabled = true;
@@ -135,8 +151,8 @@ form.addEventListener('submit', async (e) => {
     if (!netlifyResponse.ok) throw new Error('Could not save your order details. Please try again.');
 
     // 2. Create a Stripe Checkout Session for the correct total (base bag,
-    //    plus the £5 personalisation charge if selected), carrying the
-    //    order reference + customer details as metadata.
+    //    plus £5 if personalised, plus £3.99 UK shipping if selected),
+    //    carrying the order reference + customer details as metadata.
     const sessionResponse = await fetch('/.netlify/functions/create-checkout-session', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -145,6 +161,7 @@ form.addEventListener('submit', async (e) => {
         name: form.name.value,
         email: form.email.value,
         personalise: isPersonalise,
+        shipping: isShipping,
       }),
     });
 
@@ -158,6 +175,6 @@ form.addEventListener('submit', async (e) => {
   } catch (err) {
     showError(err.message || 'Something went wrong. Please try again, or email Lyndsey@Shadesocialmedia.info.');
     payBtn.disabled = false;
-    payBtnText.textContent = `Pay & Place Order · £${total}`;
+    payBtnText.textContent = `Pay & Place Order · £${formatTotal(total)}`;
   }
 });

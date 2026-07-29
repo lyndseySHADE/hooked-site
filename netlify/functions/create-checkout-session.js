@@ -9,6 +9,7 @@ const Stripe = require('stripe');
 
 const PRICE_GBP_PENCE = 3000; // £30.00 base price, change if the price changes
 const PERSONALISE_GBP_PENCE = 500; // £5.00 personalisation upcharge
+const SHIPPING_GBP_PENCE = 399; // £3.99 UK 2nd class Royal Mail
 const SITE_URL = process.env.URL || 'http://localhost:8888';
 
 exports.handler = async (event) => {
@@ -26,7 +27,7 @@ exports.handler = async (event) => {
   const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 
   try {
-    const { orderRef, name, email, personalise } = JSON.parse(event.body || '{}');
+    const { orderRef, name, email, personalise, shipping } = JSON.parse(event.body || '{}');
 
     const lineItems = [
       {
@@ -56,6 +57,20 @@ exports.handler = async (event) => {
       });
     }
 
+    if (shipping) {
+      lineItems.push({
+        price_data: {
+          currency: 'gbp',
+          unit_amount: SHIPPING_GBP_PENCE,
+          product_data: {
+            name: 'UK Shipping',
+            description: 'Royal Mail 2nd class',
+          },
+        },
+        quantity: 1,
+      });
+    }
+
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
       payment_method_types: ['card'], // Apple Pay / Google Pay surface automatically via 'card'
@@ -65,6 +80,7 @@ exports.handler = async (event) => {
         order_ref: orderRef || '',
         customer_name: name || '',
         personalised: personalise ? 'yes' : 'no',
+        shipping: shipping ? 'yes' : 'no',
       },
       success_url: `${SITE_URL}/success.html?order_ref=${encodeURIComponent(orderRef || '')}&session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${SITE_URL}/#order`,
