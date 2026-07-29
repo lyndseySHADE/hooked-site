@@ -442,7 +442,7 @@ input:focus, textarea:focus{ outline: 2.5px solid var(--red); border-color: var(
 /* ---------------------------------------------
    Footer
 --------------------------------------------- */
-.footer{ background: var(--ink); color: var(--paper); padding: 40px 0; }
+.footer{ background: var(--paper); color: var(--ink); padding: 40px 0; border-top: 1px solid rgba(36,29,26,0.1); }
 .footer__inner{ display:flex; flex-direction:column; align-items:center; gap: 14px; text-align:center; }
 .logo--footer{ margin:0; }
 .footer__links{ display:flex; gap: 22px; font-size: 14px; }
