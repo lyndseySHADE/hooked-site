@@ -4,7 +4,7 @@
 :root{
   --ink: #3A1017;
   --ink-soft: #7A5A57;
-  --paper: #FFF8EE;
+  --paper: #FFFFFF;
   --sand: #FCEBCF;
   --sand-deep: #F7DFAF;
   --pink: #FF2E78;
@@ -55,7 +55,7 @@ a{ color: inherit; }
   position: sticky;
   top: 0;
   z-index: 40;
-  background: rgba(253,251,246,0.86);
+  background: rgba(255,255,255,0.86);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(28,26,23,0.06);
 }
@@ -63,15 +63,15 @@ a{ color: inherit; }
   display:flex;
   align-items:center;
   justify-content: space-between;
-  padding: 16px 20px;
+  padding: 12px 20px;
 }
 .logo{
   display:flex;
   text-decoration: none;
   color: var(--ink);
 }
-.logo__img{ height: 32px; width: auto; display:block; }
-.logo__img--footer{ height: 40px; }
+.logo__img{ height: 56px; width: auto; display:block; }
+.logo__img--footer{ height: 72px; }
 .nav{ display:none; gap: 28px; font-size: 15px; font-weight: 500; }
 .nav a{ text-decoration:none; color: var(--ink-soft); transition: color .2s; }
 .nav a:hover{ color: var(--pink-deep); }
@@ -427,6 +427,7 @@ input:focus, textarea:focus{ outline: 2.5px solid var(--red); border-color: var(
 }
 .faq-item[open] summary::after{ transform: rotate(45deg); }
 .faq-item p{ margin: 12px 0 0; color: var(--ink-soft); line-height: 1.6; }
+.faq-item p a{ color: var(--pink-deep); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
 
 /* ---------------------------------------------
    Footer

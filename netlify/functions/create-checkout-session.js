@@ -7,7 +7,7 @@
 
 const Stripe = require('stripe');
 
-const PRICE_GBP_PENCE = 8500; // £85.00 — change if the price changes
+const PRICE_GBP_PENCE = 3000; // £30.00 — change if the price changes
 const SITE_URL = process.env.URL || 'http://localhost:8888';
 
 exports.handler = async (event) => {

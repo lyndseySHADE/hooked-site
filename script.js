@@ -79,7 +79,7 @@ form.addEventListener('submit', async (e) => {
     });
     if (!netlifyResponse.ok) throw new Error('Could not save your order details. Please try again.');
 
-    // 2. Create a Stripe Checkout Session for the £85 deposit/payment,
+    // 2. Create a Stripe Checkout Session for the £30 deposit/payment,
     //    carrying the order reference + customer details as metadata.
     const sessionResponse = await fetch('/.netlify/functions/create-checkout-session', {
       method: 'POST',
@@ -101,6 +101,6 @@ form.addEventListener('submit', async (e) => {
   } catch (err) {
     showError(err.message || 'Something went wrong. Please try again, or email hello@hookedbags.com.');
     payBtn.disabled = false;
-    payBtnText.textContent = 'Pay & Place Order — £85';
+    payBtnText.textContent = 'Pay & Place Order — £30';
   }
 });

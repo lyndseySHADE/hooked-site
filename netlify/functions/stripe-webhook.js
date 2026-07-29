@@ -12,7 +12,7 @@
 
 const Stripe = require('stripe');
 
-const OWNER_EMAIL = process.env.OWNER_EMAIL || 'hello@hookedbags.com';
+const OWNER_EMAIL = process.env.OWNER_EMAIL || 'Lyndsey@Shadesocialmedia.info';
 const FROM_EMAIL = process.env.FROM_EMAIL || 'HOOKED <orders@hookedbags.com>';
 
 exports.handler = async (event) => {
