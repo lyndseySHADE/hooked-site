@@ -1,13 +1,14 @@
 // Netlify Function: create-checkout-session
 // Creates a Stripe Checkout Session for the Ibiza Bag.
 // Apple Pay / Google Pay are shown automatically by Stripe Checkout
-// whenever the shopper's device/browser supports them — no extra
+// whenever the shopper's device/browser supports them, no extra
 // config needed beyond enabling them in the Stripe Dashboard
 // (Settings > Payment methods).
 
 const Stripe = require('stripe');
 
-const PRICE_GBP_PENCE = 3000; // £30.00 — change if the price changes
+const PRICE_GBP_PENCE = 3000; // £30.00 base price, change if the price changes
+const PERSONALISE_GBP_PENCE = 500; // £5.00 personalisation upcharge
 const SITE_URL = process.env.URL || 'http://localhost:8888';
 
 exports.handler = async (event) => {
@@ -25,28 +26,45 @@ exports.handler = async (event) => {
   const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 
   try {
-    const { orderRef, name, email } = JSON.parse(event.body || '{}');
+    const { orderRef, name, email, personalise } = JSON.parse(event.body || '{}');
+
+    const lineItems = [
+      {
+        price_data: {
+          currency: 'gbp',
+          unit_amount: PRICE_GBP_PENCE,
+          product_data: {
+            name: 'The Ibiza Bag',
+            description: 'Handmade to order crochet bag, HOOKED',
+          },
+        },
+        quantity: 1,
+      },
+    ];
+
+    if (personalise) {
+      lineItems.push({
+        price_data: {
+          currency: 'gbp',
+          unit_amount: PERSONALISE_GBP_PENCE,
+          product_data: {
+            name: 'Personalisation',
+            description: 'Custom colour combination, bow, and other requests',
+          },
+        },
+        quantity: 1,
+      });
+    }
 
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
       payment_method_types: ['card'], // Apple Pay / Google Pay surface automatically via 'card'
       customer_email: email,
-      line_items: [
-        {
-          price_data: {
-            currency: 'gbp',
-            unit_amount: PRICE_GBP_PENCE,
-            product_data: {
-              name: 'The Ibiza Bag',
-              description: 'Handmade to order crochet bag — HOOKED',
-            },
-          },
-          quantity: 1,
-        },
-      ],
+      line_items: lineItems,
       metadata: {
         order_ref: orderRef || '',
         customer_name: name || '',
+        personalised: personalise ? 'yes' : 'no',
       },
       success_url: `${SITE_URL}/success.html?order_ref=${encodeURIComponent(orderRef || '')}&session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${SITE_URL}/#order`,

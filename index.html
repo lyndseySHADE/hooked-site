@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HOOKED — The Ibiza Bag</title>
+<title>HOOKED | The Ibiza Bag</title>
 <meta name="description" content="Handmade to order crochet bags in your favourite colours. The Ibiza Bag by HOOKED.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,6 +17,7 @@
   <input type="text" name="name">
   <input type="email" name="email">
   <input type="tel" name="phone">
+  <input type="text" name="order_type">
   <textarea name="customisation"></textarea>
   <input type="file" name="inspiration" multiple>
   <input type="text" name="delivery_method">
@@ -49,7 +50,7 @@
     <div class="wrap hero__inner">
       <div class="hero__copy">
         <p class="eyebrow">Handmade in small batches</p>
-        <h1 class="hero__title">The Ibiza Bag<svg class="stitch-underline" viewBox="0 0 320 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2 12 C 20 2, 38 2, 56 12 S 92 22, 110 12 S 146 2, 164 12 S 200 22, 218 12 S 254 2, 272 12 S 308 22, 318 12" fill="none" stroke="var(--pink)" stroke-width="4" stroke-linecap="round"/></svg></h1>
+        <h1 class="hero__title">The Ibiza Bag</h1>
         <p class="hero__sub">Handmade to order, in your favourite colours.</p>
         <a href="#order" class="btn btn--primary">Order Yours</a>
       </div>
@@ -117,7 +118,7 @@
       <div class="gift-banner__copy">
         <p class="eyebrow">Hint hint</p>
         <h2 class="gift-banner__title">Buy her a crochet bag 💌</h2>
-        <p class="gift-banner__text">Birthdays, anniversaries, "just because" — the Ibiza Bag makes a gift she'll actually use. Forward this page, we won't tell.</p>
+        <p class="gift-banner__text">Birthdays, anniversaries, "just because" ~ the Ibiza Bag makes a gift she'll actually use. Forward this page, we won't tell.</p>
         <a href="#order" class="btn btn--primary">Order Yours</a>
       </div>
     </div>
@@ -148,15 +149,31 @@
         </div>
 
         <div class="field">
-          <label for="customisation">Describe your dream bag 💖</label>
-          <p class="field__hint">Tell me your favourite colours, whether you'd like a bow, and anything else you'd love me to include. You can also upload inspiration photos below.</p>
-          <textarea id="customisation" name="customisation" rows="4" placeholder="Tell me your dream colour combination, add a bow if you'd like one, or include any other requests. Feel free to describe it or upload inspiration photos." required></textarea>
+          <label>How would you like your bag?</label>
+          <div class="radio-group">
+            <label class="radio-pill">
+              <input type="radio" name="order_type" value="as_is" checked>
+              <span>Order as is</span>
+            </label>
+            <label class="radio-pill">
+              <input type="radio" name="order_type" value="personalise">
+              <span>Personalise (+£5)</span>
+            </label>
+          </div>
         </div>
 
-        <div class="field">
-          <label for="inspiration">Upload inspiration images</label>
-          <input id="inspiration" name="inspiration" type="file" accept="image/*" multiple>
-          <div id="fileList" class="file-list"></div>
+        <div id="personaliseFields" class="personalise-fields" hidden>
+          <div class="field">
+            <label for="customisation">Describe your dream bag 💖</label>
+            <p class="field__hint">Tell me your favourite colours, whether you'd like a bow, and anything else you'd love me to include. You can also upload inspiration photos below.</p>
+            <textarea id="customisation" name="customisation" rows="4" placeholder="Tell me your dream colour combination, add a bow if you'd like one, or include any other requests. Feel free to describe it or upload inspiration photos."></textarea>
+          </div>
+
+          <div class="field">
+            <label for="inspiration">Upload inspiration images</label>
+            <input id="inspiration" name="inspiration" type="file" accept="image/*" multiple>
+            <div id="fileList" class="file-list"></div>
+          </div>
         </div>
 
         <div class="field">
@@ -194,15 +211,25 @@
           </div>
         </div>
 
-        <p id="collectionNote" class="collection-note" hidden>I'll be in touch to arrange a collection time. 💌</p>
+        <p id="collectionNote" class="collection-note" hidden>I'll be in touch to arrange a collection time in Portstewart. 💌</p>
 
         <div class="order-summary">
-          <span>The Ibiza Bag</span>
-          <span>£30.00</span>
+          <div class="order-summary__row">
+            <span>The Ibiza Bag</span>
+            <span>£30.00</span>
+          </div>
+          <div class="order-summary__row" id="personaliseSummaryRow" hidden>
+            <span>Personalisation</span>
+            <span>+£5.00</span>
+          </div>
+          <div class="order-summary__row order-summary__row--total">
+            <span>Total</span>
+            <span id="orderTotal">£30.00</span>
+          </div>
         </div>
 
         <button type="submit" id="payBtn" class="btn btn--primary btn--block btn--large">
-          <span id="payBtnText">Pay &amp; Place Order — £30</span>
+          <span id="payBtnText">Pay &amp; Place Order · £30</span>
         </button>
         <p class="pay-methods">Apple Pay · Google Pay · Debit / Credit Card, via Stripe</p>
         <p id="formError" class="form-error" hidden></p>

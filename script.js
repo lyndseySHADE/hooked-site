@@ -1,5 +1,34 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
+const BASE_PRICE = 30;
+const PERSONALISE_UPCHARGE = 5;
+
+/* ---------- Order type toggle: order as is vs personalise (+£5) ---------- */
+const personaliseFields = document.getElementById('personaliseFields');
+const personaliseSummaryRow = document.getElementById('personaliseSummaryRow');
+const orderTotalEl = document.getElementById('orderTotal');
+const payBtnText = document.getElementById('payBtnText');
+const customisationInput = document.getElementById('customisation');
+const orderTypeRadios = document.querySelectorAll('input[name="order_type"]');
+
+function currentTotal(){
+  const isPersonalise = document.querySelector('input[name="order_type"]:checked').value === 'personalise';
+  return isPersonalise ? BASE_PRICE + PERSONALISE_UPCHARGE : BASE_PRICE;
+}
+
+function updateOrderTypeView(){
+  const isPersonalise = document.querySelector('input[name="order_type"]:checked').value === 'personalise';
+  personaliseFields.hidden = !isPersonalise;
+  personaliseSummaryRow.hidden = !isPersonalise;
+  customisationInput.required = isPersonalise;
+
+  const total = currentTotal();
+  orderTotalEl.textContent = `£${total}.00`;
+  payBtnText.textContent = `Pay & Place Order · £${total}`;
+}
+orderTypeRadios.forEach(r => r.addEventListener('change', updateOrderTypeView));
+updateOrderTypeView();
+
 /* ---------- Delivery method toggle ---------- */
 const shippingFields = document.getElementById('shippingFields');
 const collectionNote = document.getElementById('collectionNote');
@@ -47,7 +76,6 @@ function showError(message){
 /* ---------- Submit: capture order details, then hand off to Stripe Checkout ---------- */
 const form = document.getElementById('orderForm');
 const payBtn = document.getElementById('payBtn');
-const payBtnText = document.getElementById('payBtnText');
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -57,6 +85,9 @@ form.addEventListener('submit', async (e) => {
     form.reportValidity();
     return;
   }
+
+  const isPersonalise = document.querySelector('input[name="order_type"]:checked').value === 'personalise';
+  const total = currentTotal();
 
   payBtn.disabled = true;
   payBtnText.textContent = 'Please wait…';
@@ -79,8 +110,9 @@ form.addEventListener('submit', async (e) => {
     });
     if (!netlifyResponse.ok) throw new Error('Could not save your order details. Please try again.');
 
-    // 2. Create a Stripe Checkout Session for the £30 deposit/payment,
-    //    carrying the order reference + customer details as metadata.
+    // 2. Create a Stripe Checkout Session for the correct total (base bag,
+    //    plus the £5 personalisation charge if selected), carrying the
+    //    order reference + customer details as metadata.
     const sessionResponse = await fetch('/.netlify/functions/create-checkout-session', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -88,6 +120,7 @@ form.addEventListener('submit', async (e) => {
         orderRef,
         name: form.name.value,
         email: form.email.value,
+        personalise: isPersonalise,
       }),
     });
 
@@ -99,8 +132,8 @@ form.addEventListener('submit', async (e) => {
     window.location.href = url;
 
   } catch (err) {
-    showError(err.message || 'Something went wrong. Please try again, or email hello@hookedbags.com.');
+    showError(err.message || 'Something went wrong. Please try again, or email Lyndsey@Shadesocialmedia.info.');
     payBtn.disabled = false;
-    payBtnText.textContent = 'Pay & Place Order — £30';
+    payBtnText.textContent = `Pay & Place Order · £${total}`;
   }
 });
