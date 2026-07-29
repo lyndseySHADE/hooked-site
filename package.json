@@ -1,0 +1,9 @@
+{
+  "name": "hooked-ibiza-bag",
+  "version": "1.0.0",
+  "private": true,
+  "description": "HOOKED — one-page ordering site for the Ibiza Bag, with Stripe Checkout via Netlify Functions.",
+  "dependencies": {
+    "stripe": "^16.0.0"
+  }
+}

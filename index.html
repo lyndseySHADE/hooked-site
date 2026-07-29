@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HOOKED — The Ibiza Bag</title>
+<meta name="description" content="Handmade to order crochet bags in your favourite colours. The Ibiza Bag by HOOKED.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Hidden static form so Netlify's build bot can detect the form + file field. Real submissions happen via fetch() in script.js -->
+<form name="hooked-order" data-netlify="true" netlify-honeypot="company" enctype="multipart/form-data" hidden>
+  <input type="text" name="name">
+  <input type="email" name="email">
+  <input type="tel" name="phone">
+  <textarea name="customisation"></textarea>
+  <input type="file" name="inspiration" multiple>
+  <input type="text" name="delivery_method">
+  <input type="text" name="address_line1">
+  <input type="text" name="address_line2">
+  <input type="text" name="town_city">
+  <input type="text" name="postcode">
+  <input type="text" name="order_ref">
+  <input type="text" name="company">
+</form>
+
+<header class="topbar">
+  <div class="wrap topbar__inner">
+    <a href="#top" class="logo"><img src="assets/hooked-logo.png" alt="HOOKED" class="logo__img"></a>
+    <nav class="nav">
+      <a href="#about">The Bag</a>
+      <a href="#order">Order</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="topbar__insta" href="https://instagram.com" target="_blank" rel="noopener" aria-label="HOOKED on Instagram">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.6"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"/></svg>
+    </a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero__inner">
+      <div class="hero__copy">
+        <p class="eyebrow">Handmade in small batches</p>
+        <h1 class="hero__title">The Ibiza Bag<svg class="stitch-underline" viewBox="0 0 320 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2 12 C 20 2, 38 2, 56 12 S 92 22, 110 12 S 146 2, 164 12 S 200 22, 218 12 S 254 2, 272 12 S 308 22, 318 12" fill="none" stroke="var(--pink)" stroke-width="4" stroke-linecap="round"/></svg></h1>
+        <p class="hero__sub">Handmade to order, in your favourite colours.</p>
+        <a href="#order" class="btn btn--primary">Order Yours</a>
+      </div>
+      <div class="hero__art">
+        <div class="hero__photo">
+          <img src="assets/hero-pink-outfit.jpg" alt="The Ibiza Bag carried on the arm, styled with gold jewellery" loading="eager">
+        </div>
+        <div class="hero__blob hero__blob--1"></div>
+        <div class="hero__blob hero__blob--2"></div>
+        <div class="swatch-float swatch-float--1"></div>
+        <div class="swatch-float swatch-float--2"></div>
+        <div class="swatch-float swatch-float--3"></div>
+      </div>
+    </div>
+    <svg class="scallop scallop--hero" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40 V20 Q15 0 30 20 T60 20 T90 20 T120 20 T150 20 T180 20 T210 20 T240 20 T270 20 T300 20 T330 20 T360 20 T390 20 T420 20 T450 20 T480 20 T510 20 T540 20 T570 20 T600 20 T630 20 T660 20 T690 20 T720 20 T750 20 T780 20 T810 20 T840 20 T870 20 T900 20 T930 20 T960 20 T990 20 T1020 20 T1050 20 T1080 20 T1110 20 T1140 20 T1170 20 T1200 20 V40 Z" fill="var(--paper)"/></svg>
+  </section>
+  <div class="checker-strip" aria-hidden="true"></div>
+
+  <!-- ABOUT -->
+  <section id="about" class="about">
+    <div class="wrap">
+      <p class="eyebrow eyebrow--center">About the bag</p>
+      <h2 class="section-title">Made by hand. Made for summer.</h2>
+
+      <div class="gallery">
+        <div class="gallery__item gallery__item--big">
+          <img src="assets/flatlay-full-bag.jpg" alt="The Ibiza Bag laid flat, showing its full shape and handles" loading="lazy">
+        </div>
+        <div class="gallery__item">
+          <img src="assets/detail-macro-hook.jpg" alt="Close up macro of the Ibiza Bag's handmade crochet stitches with crochet hook" loading="lazy">
+        </div>
+        <div class="gallery__item">
+          <img src="assets/lifestyle-car-red.jpg" alt="The Ibiza Bag worn on the arm, styled with a red jumper and gold jewellery" loading="lazy">
+        </div>
+      </div>
+
+      <div class="about__grid">
+        <ul class="features">
+          <li><svg class="loop-icon" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7" fill="none" stroke="var(--orange)" stroke-width="2.4"/></svg> Handmade using premium T-shirt yarn</li>
+          <li><svg class="loop-icon" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7" fill="none" stroke="var(--pink)" stroke-width="2.4"/></svg> Lightweight, easy to carry all day</li>
+          <li><svg class="loop-icon" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7" fill="none" stroke="var(--sun)" stroke-width="2.4"/></svg> Custom colour combinations available</li>
+          <li><svg class="loop-icon" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7" fill="none" stroke="var(--orange)" stroke-width="2.4"/></svg> Made to order, just for you</li>
+          <li><svg class="loop-icon" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7" fill="none" stroke="var(--pink)" stroke-width="2.4"/></svg> Perfect for holidays, brunch, shopping &amp; everyday</li>
+        </ul>
+
+        <div class="price-card">
+          <span class="price-card__scallop" aria-hidden="true">
+            <svg viewBox="0 0 200 16" preserveAspectRatio="none"><path d="M0 16V8Q6.25 0 12.5 8T25 8T37.5 8T50 8T62.5 8T75 8T87.5 8T100 8T112.5 8T125 8T137.5 8T150 8T162.5 8T175 8T187.5 8T200 8V16Z" fill="var(--sand)"/></svg>
+          </span>
+          <p class="price-card__label">The Ibiza Bag</p>
+          <p class="price-card__amount">£85</p>
+          <p class="price-card__note">Made to order · ready in 2–3 weeks</p>
+          <a href="#order" class="btn btn--primary btn--block">Order Yours</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GIFTING BANNER -->
+  <section class="gift-banner">
+    <div class="wrap gift-banner__inner">
+      <div class="gift-banner__photo">
+        <img src="assets/gift-newspaper.jpg" alt="A handwritten sign reading Buy Her A Crochet Bag" loading="lazy">
+      </div>
+      <div class="gift-banner__copy">
+        <p class="eyebrow">Hint hint</p>
+        <h2 class="gift-banner__title">Buy her a crochet bag 💌</h2>
+        <p class="gift-banner__text">Birthdays, anniversaries, "just because" — the Ibiza Bag makes a gift she'll actually use. Forward this page, we won't tell.</p>
+        <a href="#order" class="btn btn--primary">Order Yours</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORDER -->
+  <section id="order" class="order">
+    <div class="wrap wrap--narrow">
+      <p class="eyebrow eyebrow--center">Order your ibiza bag</p>
+      <h2 class="section-title section-title--center">Let's make it yours</h2>
+      <p class="order__intro">View the bag, tell me your dream design, upload inspiration, then pay securely. That's it.</p>
+
+      <form id="orderForm" class="order-card" novalidate>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required autocomplete="email">
+          </div>
+        </div>
+        <div class="field">
+          <label for="phone">Phone number</label>
+          <input id="phone" name="phone" type="tel" required autocomplete="tel">
+        </div>
+
+        <div class="field">
+          <label for="customisation">Describe your dream bag 💖</label>
+          <p class="field__hint">Tell me your favourite colours, whether you'd like a bow, and anything else you'd love me to include. You can also upload inspiration photos below.</p>
+          <textarea id="customisation" name="customisation" rows="4" placeholder="Tell me your dream colour combination, add a bow if you'd like one, or include any other requests. Feel free to describe it or upload inspiration photos." required></textarea>
+        </div>
+
+        <div class="field">
+          <label for="inspiration">Upload inspiration images</label>
+          <input id="inspiration" name="inspiration" type="file" accept="image/*" multiple>
+          <div id="fileList" class="file-list"></div>
+        </div>
+
+        <div class="field">
+          <label>Delivery</label>
+          <div class="radio-group">
+            <label class="radio-pill">
+              <input type="radio" name="delivery_method" value="shipping" checked>
+              <span>UK Shipping</span>
+            </label>
+            <label class="radio-pill">
+              <input type="radio" name="delivery_method" value="collection">
+              <span>Collection</span>
+            </label>
+          </div>
+        </div>
+
+        <div id="shippingFields" class="shipping-fields">
+          <div class="field">
+            <label for="address_line1">Address line 1</label>
+            <input id="address_line1" name="address_line1" type="text">
+          </div>
+          <div class="field">
+            <label for="address_line2">Address line 2</label>
+            <input id="address_line2" name="address_line2" type="text">
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="town_city">Town / City</label>
+              <input id="town_city" name="town_city" type="text">
+            </div>
+            <div class="field">
+              <label for="postcode">Postcode</label>
+              <input id="postcode" name="postcode" type="text">
+            </div>
+          </div>
+        </div>
+
+        <p id="collectionNote" class="collection-note" hidden>I'll be in touch to arrange a collection time. 💌</p>
+
+        <div class="order-summary">
+          <span>The Ibiza Bag</span>
+          <span>£85.00</span>
+        </div>
+
+        <button type="submit" id="payBtn" class="btn btn--primary btn--block btn--large">
+          <span id="payBtnText">Pay &amp; Place Order — £85</span>
+        </button>
+        <p class="pay-methods">Apple Pay · Google Pay · Debit / Credit Card, via Stripe</p>
+        <p id="formError" class="form-error" hidden></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="faq">
+    <div class="wrap wrap--narrow">
+      <p class="eyebrow eyebrow--center">Questions</p>
+      <h2 class="section-title section-title--center">FAQ</h2>
+
+      <details class="faq-item" open>
+        <summary>How long will my bag take?</summary>
+        <p>Every bag is made to order, so please allow 2–3 weeks from your order date. If you need it sooner for a trip, mention it in your customisation notes and I'll do my best.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can I choose any colours?</summary>
+        <p>Yes! Describe your dream combination in the order form, or send inspiration photos, and I'll match it as closely as possible using premium T-shirt yarn.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can I send inspiration photos?</summary>
+        <p>Absolutely, just upload them in the order form. Pinterest screenshots, outfit photos or a favourite sunset all help me get your bag right.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do you ship across the UK?</summary>
+        <p>Yes, UK shipping is available at checkout. Your bag is carefully packaged and tracked.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can I collect locally?</summary>
+        <p>Yes, choose Collection at checkout and I'll be in touch to arrange a time that suits you.</p>
+      </details>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <img src="assets/hooked-logo.png" alt="HOOKED" class="logo__img logo__img--footer">
+    <div class="footer__links">
+      <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+      <a href="mailto:hello@hookedbags.com">hello@hookedbags.com</a>
+    </div>
+    <p class="footer__copy">© <span id="year"></span> HOOKED. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

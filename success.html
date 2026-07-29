@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank you — HOOKED</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .success{
+    min-height: 100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: 40px 20px;
+    background: linear-gradient(160deg, var(--sand), var(--paper) 60%);
+    text-align:center;
+  }
+  .success-card{
+    max-width: 460px;
+    background:#fff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    padding: 48px 32px;
+  }
+  .success-icon{
+    width: 64px; height:64px;
+    border-radius:50%;
+    background: var(--pink);
+    display:flex; align-items:center; justify-content:center;
+    margin: 0 auto 22px;
+    animation: pop .5s ease;
+  }
+  @keyframes pop{ 0%{ transform: scale(0); } 70%{ transform: scale(1.08); } 100%{ transform: scale(1); } }
+  .success h1{ font-family: var(--font-display); font-size: 30px; margin: 0 0 10px; }
+  .success p{ color: var(--ink-soft); line-height:1.6; }
+  .order-ref{
+    display:inline-block;
+    margin-top: 16px;
+    font-family: var(--font-body);
+    font-weight:600;
+    background: var(--sand);
+    border-radius: var(--radius-pill);
+    padding: 8px 18px;
+    font-size: 13px;
+  }
+</style>
+</head>
+<body>
+  <div class="success">
+    <div class="success-card">
+      <div class="success-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h1>Yay, your bag is on its way to being made! 🧡</h1>
+      <p>Thank you for ordering the Ibiza Bag. A confirmation email is heading to your inbox, and I'll be in touch shortly to talk through your custom design.</p>
+      <p id="refWrap" class="order-ref" hidden>Order ref: <span id="refValue"></span></p>
+      <p style="margin-top:28px;"><a href="/" class="btn btn--primary">Back to HOOKED</a></p>
+    </div>
+  </div>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const ref = params.get('order_ref');
+    if (ref) {
+      document.getElementById('refValue').textContent = ref;
+      document.getElementById('refWrap').hidden = false;
+    }
+  </script>
+</body>
+</html>
