@@ -3,8 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HOOKED | Handmade Crochet Bags</title>
-<meta name="description" content="Handmade to order crochet bags in your favourite colours, by HOOKED.">
+<title>HOOKED | Handmade Crochet Bags in Northern Ireland</title>
+<meta name="description" content="Handmade to order crochet bags in your favourite colours. The Ibiza Bag by HOOKED — made in Portstewart, Northern Ireland, shipped UK-wide.">
+<link rel="canonical" href="https://hookedbylm.netlify.app/">
+<meta name="robots" content="index, follow">
 
 <!-- Social share preview (WhatsApp, iMessage, Facebook, etc.) -->
 <meta property="og:type" content="website">
@@ -18,10 +20,61 @@
 <meta name="twitter:title" content="HOOKED | Handmade Crochet Bags">
 <meta name="twitter:description" content="Handmade to order crochet bags in your favourite colours, by HOOKED.">
 <meta name="twitter:image" content="https://hookedbylm.netlify.app/assets/social-preview.jpg">
+
+<!-- Structured data: helps Google understand this as a local, handmade product business -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "HOOKED",
+  "description": "Handmade to order crochet bags in bold, custom colour combinations.",
+  "url": "https://hookedbylm.netlify.app/",
+  "image": "https://hookedbylm.netlify.app/assets/social-preview.jpg",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Portstewart",
+    "addressRegion": "Northern Ireland",
+    "addressCountry": "GB"
+  },
+  "sameAs": [
+    "https://www.instagram.com/HOOKED.by.LM"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "The Ibiza Bag",
+  "description": "Handmade to order crochet bag using premium T-shirt yarn, in custom colour combinations.",
+  "image": "https://hookedbylm.netlify.app/assets/hero-pink-outfit.jpg",
+  "brand": {
+    "@type": "Brand",
+    "name": "HOOKED"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://hookedbylm.netlify.app/#order",
+    "priceCurrency": "GBP",
+    "price": "30.00",
+    "availability": "https://schema.org/InStock"
+  }
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+
+<!-- Google Analytics (GA4) -->
+<!-- Replace BOTH "G-XXXXXXXXXX" below with your real Measurement ID from Google Analytics (Admin > Data Streams > your site > Measurement ID). Until you do, this snippet won't send any data. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
 </head>
 <body>
 
@@ -307,6 +360,20 @@
         <summary>Can I collect locally?</summary>
         <p>Yes, choose Collection at checkout and I'll be in touch to arrange a time that suits you.</p>
       </details>
+    </div>
+  </section>
+
+  <!-- INSTAGRAM FEED -->
+  <!-- Paste your widget embed code (from Elfsight, SnapWidget, etc.) inside #instagramFeed below. -->
+  <section class="insta-feed">
+    <div class="wrap">
+      <p class="eyebrow eyebrow--center">Follow along</p>
+      <h2 class="section-title section-title--center">@HOOKED.by.LM</h2>
+      <div id="instagramFeed" class="insta-feed__embed">
+        <!-- Elfsight Instagram Feed | Hooked Insta -->
+        <script src="https://elfsightcdn.com/platform.js" async></script>
+        <div class="elfsight-app-07ad34d8-2f05-43bc-8690-72147aeda198" data-elfsight-app-lazy></div>
+      </div>
     </div>
   </section>
 

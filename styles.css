@@ -467,6 +467,24 @@ input:focus, textarea:focus{ outline: 2.5px solid var(--red); border-color: var(
 .faq-item p a{ color: var(--pink-deep); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
 
 /* ---------------------------------------------
+   Instagram feed
+--------------------------------------------- */
+.insta-feed{ padding: 20px 0 80px; }
+.insta-feed__embed{
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.insta-feed__placeholder{
+  background: var(--sand);
+  border-radius: var(--radius-lg);
+  padding: 40px 24px;
+  text-align: center;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+.insta-feed__placeholder a{ color: var(--pink-deep); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+
+/* ---------------------------------------------
    Footer
 --------------------------------------------- */
 .footer{ background: var(--paper); color: var(--ink); padding: 40px 0; border-top: 1px solid rgba(36,29,26,0.1); }
