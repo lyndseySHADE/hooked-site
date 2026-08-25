@@ -1,5 +1,5 @@
 // Netlify Function: create-checkout-session
-// Creates a Stripe Checkout Session for the Ibiza Bag.
+// Creates a Stripe Checkout Session for whichever HOOKED bag style was chosen.
 // Apple Pay / Google Pay are shown automatically by Stripe Checkout
 // whenever the shopper's device/browser supports them, no extra
 // config needed beyond enabling them in the Stripe Dashboard
@@ -7,7 +7,13 @@
 
 const Stripe = require('stripe');
 
-const PRICE_GBP_PENCE = 3000; // £30.00 base price, change if the price changes
+// Add a new style here (and in script.js's BAG_STYLES) whenever a new
+// bag becomes available to order. Prices are in pence.
+const BAG_STYLES = {
+  ibiza:   { name: 'The Ibiza Bag',   priceGbpPence: 3000 },
+  mykonos: { name: 'The Mykonos Bag', priceGbpPence: 3000 },
+};
+
 const PERSONALISE_GBP_PENCE = 500; // £5.00 personalisation upcharge
 const SHIPPING_GBP_PENCE = 399; // £3.99 UK 2nd class Royal Mail
 const SITE_URL = process.env.URL || 'http://localhost:8888';
@@ -27,15 +33,17 @@ exports.handler = async (event) => {
   const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 
   try {
-    const { orderRef, name, email, personalise, shipping } = JSON.parse(event.body || '{}');
+    const { orderRef, name, email, bagStyle, personalise, shipping } = JSON.parse(event.body || '{}');
+
+    const style = BAG_STYLES[bagStyle] || BAG_STYLES.ibiza;
 
     const lineItems = [
       {
         price_data: {
           currency: 'gbp',
-          unit_amount: PRICE_GBP_PENCE,
+          unit_amount: style.priceGbpPence,
           product_data: {
-            name: 'The Ibiza Bag',
+            name: style.name,
             description: 'Handmade to order crochet bag, HOOKED',
           },
         },
@@ -79,6 +87,7 @@ exports.handler = async (event) => {
       metadata: {
         order_ref: orderRef || '',
         customer_name: name || '',
+        bag_style: style.name,
         personalised: personalise ? 'yes' : 'no',
         shipping: shipping ? 'yes' : 'no',
       },

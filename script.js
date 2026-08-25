@@ -1,27 +1,43 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
-const BASE_PRICE = 30;
+const BAG_STYLES = {
+  ibiza:   { name: 'The Ibiza Bag',   price: 30 },
+  mykonos: { name: 'The Mykonos Bag', price: 30 },
+};
 const PERSONALISE_UPCHARGE = 5;
 const SHIPPING_COST = 3.99;
 
-/* ---------- Bag style toggle: Ibiza Bag vs Coming Soon placeholder ---------- */
+/* ---------- Bag style toggle: Ibiza / Mykonos vs Coming Soon placeholder ---------- */
 const orderFormRest = document.getElementById('orderFormRest');
 const comingSoonNote = document.getElementById('comingSoonNote');
 const bagStyleRadios = document.querySelectorAll('input[name="bag_style"]');
+const baseBagNameEl = document.getElementById('baseBagName');
+const baseBagPriceEl = document.getElementById('baseBagPrice');
+
+function selectedBagStyleValue(){
+  return document.querySelector('input[name="bag_style"]:checked').value;
+}
+function isComingSoonSelected(){
+  return selectedBagStyleValue() === 'coming_soon';
+}
 
 function updateBagStyleView(){
-  const isComingSoon = document.querySelector('input[name="bag_style"]:checked').value === 'coming_soon';
+  const isComingSoon = isComingSoonSelected();
   orderFormRest.hidden = isComingSoon;
   comingSoonNote.hidden = !isComingSoon;
 
-  if (isComingSoon) {
-    orderFormRest.querySelectorAll('input, textarea').forEach(el => { el.disabled = true; });
-  } else {
-    orderFormRest.querySelectorAll('input, textarea').forEach(el => { el.disabled = false; });
+  orderFormRest.querySelectorAll('input, textarea').forEach(el => { el.disabled = isComingSoon; });
+
+  if (!isComingSoon) {
+    const style = BAG_STYLES[selectedBagStyleValue()];
+    if (style) {
+      baseBagNameEl.textContent = style.name;
+      baseBagPriceEl.textContent = `£${style.price.toFixed(2)}`;
+    }
   }
+  updateSummary();
 }
 bagStyleRadios.forEach(r => r.addEventListener('change', updateBagStyleView));
-updateBagStyleView();
 
 /* ---------- Order type (as is vs personalise +£5) and delivery (shipping +£3.99 vs collection) ---------- */
 const personaliseFields = document.getElementById('personaliseFields');
@@ -37,7 +53,6 @@ const collectionNote = document.getElementById('collectionNote');
 const deliveryRadios = document.querySelectorAll('input[name="delivery_method"]');
 
 function formatTotal(amount){
-  // Whole pounds show without decimals in the button (£30), summary always shows pence (£30.00)
   return amount.toFixed(2);
 }
 
@@ -49,13 +64,15 @@ function isShippingSelected(){
 }
 
 function currentTotal(){
-  let total = BASE_PRICE;
+  const style = BAG_STYLES[selectedBagStyleValue()];
+  let total = style ? style.price : 0;
   if (isPersonaliseSelected()) total += PERSONALISE_UPCHARGE;
   if (isShippingSelected()) total += SHIPPING_COST;
   return total;
 }
 
 function updateSummary(){
+  if (isComingSoonSelected()) return;
   const total = currentTotal();
   orderTotalEl.textContent = `£${formatTotal(total)}`;
   payBtnText.textContent = `Pay & Place Order · £${formatTotal(total)}`;
@@ -75,7 +92,6 @@ function updateDeliveryView(){
   shippingFields.hidden = !isShipping;
   shippingSummaryRow.hidden = !isShipping;
   collectionNote.hidden = isShipping;
-  // shipping address only required when shipping is selected
   ['address_line1','town_city','postcode'].forEach(id=>{
     const el = document.getElementById(id);
     if(el) el.required = isShipping;
@@ -84,6 +100,7 @@ function updateDeliveryView(){
 }
 deliveryRadios.forEach(r => r.addEventListener('change', updateDeliveryView));
 
+updateBagStyleView();
 updateOrderTypeView();
 updateDeliveryView();
 
@@ -102,7 +119,6 @@ inspirationInput.addEventListener('change', () => {
 
 /* ---------- Helpers ---------- */
 function encodeFormData(formEl){
-  // Encodes a form (incl. files) for Netlify Forms via fetch()
   return new FormData(formEl);
 }
 
@@ -125,6 +141,7 @@ form.addEventListener('submit', async (e) => {
     return;
   }
 
+  const bagStyle = selectedBagStyleValue();
   const isPersonalise = isPersonaliseSelected();
   const isShipping = isShippingSelected();
   const total = currentTotal();
@@ -150,9 +167,9 @@ form.addEventListener('submit', async (e) => {
     });
     if (!netlifyResponse.ok) throw new Error('Could not save your order details. Please try again.');
 
-    // 2. Create a Stripe Checkout Session for the correct total (base bag,
-    //    plus £5 if personalised, plus £3.99 UK shipping if selected),
-    //    carrying the order reference + customer details as metadata.
+    // 2. Create a Stripe Checkout Session for the correct total (base bag
+    //    for the chosen style, plus £5 if personalised, plus £3.99 UK
+    //    shipping if selected), carrying order reference + details as metadata.
     const sessionResponse = await fetch('/.netlify/functions/create-checkout-session', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -160,6 +177,7 @@ form.addEventListener('submit', async (e) => {
         orderRef,
         name: form.name.value,
         email: form.email.value,
+        bagStyle,
         personalise: isPersonalise,
         shipping: isShipping,
       }),

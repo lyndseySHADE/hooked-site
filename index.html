@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HOOKED | Handmade Crochet Bags in Northern Ireland</title>
-<meta name="description" content="Handmade to order crochet bags in your favourite colours. The Ibiza Bag by HOOKED — made in Portstewart, Northern Ireland, shipped UK-wide.">
+<meta name="description" content="Handmade to order crochet bags in your favourite colours. The Ibiza Bag and The Mykonos Bag by HOOKED — made in Portstewart, Northern Ireland, shipped UK-wide.">
 <link rel="canonical" href="https://hookedbylm.netlify.app/">
 <meta name="robots" content="index, follow">
 
@@ -176,6 +176,22 @@
     </div>
   </section>
 
+  <!-- MYKONOS INTRO -->
+  <section class="style-banner">
+    <div class="wrap gift-banner__inner">
+      <div class="gift-banner__photo">
+        <img src="assets/mykonos-flatlay.jpg" alt="The Mykonos Bag, handmade in shades of blue and cream with gold" loading="lazy">
+      </div>
+      <div class="gift-banner__copy">
+        <p class="eyebrow">New style</p>
+        <h2 class="gift-banner__title">The Mykonos Bag</h2>
+        <p class="gift-banner__text">Blue on blue on blue, with a hint of gold. Same premium T-shirt yarn, same made-to-order magic, a brand new colour story.</p>
+        <p class="style-banner__price">£30</p>
+        <a href="#order" class="btn btn--primary">Order Yours</a>
+      </div>
+    </div>
+  </section>
+
   <!-- GIFTING BANNER -->
   <section class="gift-banner">
     <div class="wrap gift-banner__inner">
@@ -206,6 +222,10 @@
             <label class="radio-pill">
               <input type="radio" name="bag_style" value="ibiza" checked>
               <span>The Ibiza Bag · £30</span>
+            </label>
+            <label class="radio-pill">
+              <input type="radio" name="bag_style" value="mykonos">
+              <span>The Mykonos Bag · £30</span>
             </label>
             <label class="radio-pill">
               <input type="radio" name="bag_style" value="coming_soon">
@@ -323,8 +343,8 @@
 
         <div class="order-summary">
           <div class="order-summary__row">
-            <span>The Ibiza Bag</span>
-            <span>£30.00</span>
+            <span id="baseBagName">The Ibiza Bag</span>
+            <span id="baseBagPrice">£30.00</span>
           </div>
           <div class="order-summary__row" id="personaliseSummaryRow" hidden>
             <span>Personalisation</span>
