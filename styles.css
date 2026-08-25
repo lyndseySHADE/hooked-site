@@ -290,6 +290,32 @@ a{ color: inherit; }
 --------------------------------------------- */
 .gift-banner{ padding: 20px 0 70px; }
 .style-banner{ padding: 0 0 20px; }
+
+/* ---------------------------------------------
+   Showcase gallery (scrolling strip)
+--------------------------------------------- */
+.showcase{ padding: 10px 0 40px; }
+.showcase__strip{
+  display:flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding: 0 20px 10px;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+}
+.showcase__strip img{
+  flex: 0 0 auto;
+  width: 240px;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  scroll-snap-align: start;
+}
+@media (min-width: 760px){
+  .showcase__strip{ padding: 0 calc((100% - 1100px) / 2) 10px; }
+  .showcase__strip img{ width: 300px; }
+}
 .style-banner__price{
   font-family: var(--font-display);
   font-weight: 700;
