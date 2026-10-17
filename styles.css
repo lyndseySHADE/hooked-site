@@ -575,3 +575,20 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   outline: 2.5px solid var(--red);
   outline-offset: 2px;
 }
+
+/* Lead-time notes (Becca's Big Beach Bag) */
+.style-banner__lead{
+  margin: 0 0 18px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+.lead-note{
+  margin: 0 0 18px;
+  padding: 12px 16px;
+  background: var(--sand);
+  border-radius: 14px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.lead-note[hidden]{ display:none !important; }
