@@ -10,8 +10,9 @@ const Stripe = require('stripe');
 // Add a new style here (and in script.js's BAG_STYLES) whenever a new
 // bag becomes available to order. Prices are in pence.
 const BAG_STYLES = {
-  ibiza:   { name: 'The Ibiza Bag',   priceGbpPence: 3000 },
-  mykonos: { name: 'The Mykonos Bag', priceGbpPence: 3000 },
+  ibiza:   { name: 'The Ibiza Bag',         priceGbpPence: 3000 },
+  mykonos: { name: 'The Mykonos Bag',       priceGbpPence: 3000 },
+  becca:   { name: "Becca's Big Beach Bag", priceGbpPence: 5000 },
 };
 
 const PERSONALISE_GBP_PENCE = 500; // £5.00 personalisation upcharge

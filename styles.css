@@ -66,6 +66,18 @@ a{ color: inherit; }
   align-items:center;
   padding: 8px 20px;
 }
+
+.announce-bar{
+  display:block;
+  text-align:center;
+  background: var(--pink);
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 16px;
+  text-decoration: none;
+}
+.announce-bar:hover{ background: var(--pink-deep); }
 .logo{
   display:flex;
   text-decoration: none;

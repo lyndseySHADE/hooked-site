@@ -1,8 +1,9 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
 const BAG_STYLES = {
-  ibiza:   { name: 'The Ibiza Bag',   price: 30 },
-  mykonos: { name: 'The Mykonos Bag', price: 30 },
+  ibiza:   { name: 'The Ibiza Bag',           price: 30 },
+  mykonos: { name: 'The Mykonos Bag',         price: 30 },
+  becca:   { name: "Becca's Big Beach Bag",   price: 50 },
 };
 const PERSONALISE_UPCHARGE = 5;
 const SHIPPING_COST = 3.99;
