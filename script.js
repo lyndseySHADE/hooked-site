@@ -26,7 +26,6 @@ function updateBagStyleView(){
   const isComingSoon = isComingSoonSelected();
   orderFormRest.hidden = isComingSoon;
   comingSoonNote.hidden = !isComingSoon;
-  document.getElementById('beccaLeadNote').hidden = selectedBagStyleValue() !== 'becca';
 
   orderFormRest.querySelectorAll('input, textarea').forEach(el => { el.disabled = isComingSoon; });
 
