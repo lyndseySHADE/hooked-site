@@ -1,5 +1,21 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
+/* ---------- Pause switch ----------
+   true  = online orders are paused (Christmas markets).
+   false = orders are open again. Also change ORDERS_PAUSED in
+   netlify/functions/create-checkout-session.js to match. */
+const ORDERS_PAUSED = true;
+
+if (ORDERS_PAUSED) {
+  document.getElementById('ordersPausedNote').hidden = false;
+  document.getElementById('orderForm').hidden = true;
+  const intro = document.querySelector('.order__intro'); if (intro) intro.hidden = true;
+  document.querySelectorAll('[data-order-btn]').forEach(b => { b.textContent = 'Orders Paused'; });
+} else {
+  const bar = document.getElementById('announceBar');
+  bar.textContent = bar.dataset.open;
+}
+
 const BAG_STYLES = {
   ibiza:   { name: 'The Ibiza Bag',           price: 30 },
   mykonos: { name: 'The Mykonos Bag',         price: 30 },
@@ -26,6 +42,7 @@ function updateBagStyleView(){
   const isComingSoon = isComingSoonSelected();
   orderFormRest.hidden = isComingSoon;
   comingSoonNote.hidden = !isComingSoon;
+  document.getElementById('beccaLeadNote').hidden = selectedBagStyleValue() !== 'becca';
 
   orderFormRest.querySelectorAll('input, textarea').forEach(el => { el.disabled = isComingSoon; });
 
@@ -135,6 +152,7 @@ const payBtn = document.getElementById('payBtn');
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
+  if (ORDERS_PAUSED) return;
   document.getElementById('formError').hidden = true;
 
   if (!form.checkValidity()) {
@@ -197,3 +215,50 @@ form.addEventListener('submit', async (e) => {
     payBtnText.textContent = `Pay & Place Order · £${formatTotal(total)}`;
   }
 });
+
+/* ---------- Christmas mode ----------
+   true  = festive look (snow, fairy lights, red/green accents).
+   false = back to the normal HOOKED look after the season. */
+const CHRISTMAS_MODE = true;
+
+if (CHRISTMAS_MODE) {
+  document.body.classList.add('xmas');
+
+  // Fairy lights hanging below the announcement bar
+  const bar = document.querySelector('.announce-bar');
+  if (bar) { const l = document.createElement('div'); l.className = 'xmas-lights'; l.setAttribute('aria-hidden','true'); bar.appendChild(l); }
+
+  // Festive copy
+  const eyebrow = document.querySelector('.hero .eyebrow');
+  if (eyebrow) eyebrow.textContent = 'Handmade with love this Christmas 🎄';
+  const footerInner = document.querySelector('.footer__inner');
+  if (footerInner) {
+    const m = document.createElement('p'); m.className = 'xmas-footer-msg';
+    m.textContent = 'Merry Christmas from HOOKED 🎄';
+    footerInner.insertBefore(m, footerInner.querySelector('.footer__links'));
+  }
+
+  // Gentle falling snow (skipped for people who prefer reduced motion)
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const cv = document.createElement('canvas'); cv.className = 'xmas-snow'; cv.setAttribute('aria-hidden','true');
+    document.body.appendChild(cv);
+    const ctx = cv.getContext('2d');
+    let w, h, flakes = [];
+    const resize = () => { w = cv.width = innerWidth; h = cv.height = innerHeight; };
+    resize(); addEventListener('resize', resize);
+    const count = innerWidth < 700 ? 28 : 55;
+    for (let i = 0; i < count; i++) flakes.push({ x: Math.random()*innerWidth, y: Math.random()*innerHeight, r: 2.5+Math.random()*3.5, s: 0.4+Math.random()*0.9, d: Math.random()*Math.PI*2 });
+    const tick = () => {
+      ctx.clearRect(0, 0, w, h);
+      for (const f of flakes) {
+        f.y += f.s; f.d += 0.012; f.x += Math.sin(f.d) * 0.5;
+        if (f.y > h + 8) { f.y = -8; f.x = Math.random()*w; }
+        ctx.beginPath(); ctx.arc(f.x, f.y, f.r, 0, Math.PI*2);
+        ctx.fillStyle = 'rgba(255,255,255,0.95)'; ctx.fill();
+        ctx.lineWidth = 1; ctx.strokeStyle = 'rgba(140,175,215,0.55)'; ctx.stroke();
+      }
+      requestAnimationFrame(tick);
+    };
+    tick();
+  }
+}

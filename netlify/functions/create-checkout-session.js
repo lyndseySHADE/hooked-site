@@ -19,9 +19,20 @@ const PERSONALISE_GBP_PENCE = 500; // £5.00 personalisation upcharge
 const SHIPPING_GBP_PENCE = 399; // £3.99 UK 2nd class Royal Mail
 const SITE_URL = process.env.URL || 'http://localhost:8888';
 
+// true = online orders are paused (Christmas markets). Set to false to reopen,
+// and change ORDERS_PAUSED in script.js to match.
+const ORDERS_PAUSED = true;
+
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method Not Allowed' };
+  }
+
+  if (ORDERS_PAUSED) {
+    return {
+      statusCode: 503,
+      body: JSON.stringify({ error: 'Online orders are paused while HOOKED prepares for the Christmas markets.' }),
+    };
   }
 
   if (!process.env.STRIPE_SECRET_KEY) {

@@ -592,3 +592,80 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   line-height: 1.5;
 }
 .lead-note[hidden]{ display:none !important; }
+
+/* Orders paused notice */
+.paused-note{
+  background: var(--sand);
+  border-radius: var(--radius-lg);
+  padding: 36px 28px;
+  text-align: center;
+  line-height: 1.6;
+}
+.paused-note[hidden]{ display:none !important; }
+.paused-note__title{
+  font-family: var(--font-display);
+  font-size: 26px;
+  margin: 0 0 10px;
+}
+.paused-note p{ margin: 0 0 10px; }
+.paused-note a{ color: var(--pink-deep); font-weight: 600; }
+
+
+/* =============================================
+   CHRISTMAS MODE (switched on by CHRISTMAS_MODE in script.js)
+============================================= */
+.xmas{ --xmas-red:#C8102E; --xmas-green:#1E7B4B; --xmas-gold:#F2B632; }
+
+.xmas .announce-bar{
+  background: repeating-linear-gradient(-45deg, var(--xmas-red) 0 18px, #A50D26 18px 36px);
+  letter-spacing: .01em;
+}
+.xmas .announce-bar:hover{ background: var(--xmas-red); }
+.xmas .announce-bar{ position:relative; z-index:3; }
+
+.xmas .topbar{ border-bottom: 3px solid var(--xmas-green); }
+
+.xmas-lights{
+  position:absolute; left:0; right:0; top:100%;
+  height:30px; pointer-events:none;
+  background: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22120%22 height=%2230%22 viewBox=%220 0 120 30%22%3E%3Cpath d=%22M0 4 Q15 14 30 4 T60 4 T90 4 T120 4%22 fill=%22none%22 stroke=%22%232c5a43%22 stroke-width=%222%22/%3E%3C/svg%3E") repeat-x left top;
+}
+.xmas-lights::before, .xmas-lights::after{
+  content:""; position:absolute; inset:0;
+  background-repeat: repeat-x; background-position: left top;
+  animation: xmas-twinkle 1.8s ease-in-out infinite;
+}
+.xmas-lights::before{ background-image: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22120%22 height=%2230%22 viewBox=%220 0 120 30%22%3E%3Crect x=%2212.5%22 y=%227%22 width=%225%22 height=%225%22 rx=%221%22 fill=%22%232c5a43%22/%3E%3Cellipse cx=%2215%22 cy=%2217%22 rx=%225%22 ry=%226.5%22 fill=%22%23E8222E%22/%3E%3Cellipse cx=%2213.5%22 cy=%2215%22 rx=%221.4%22 ry=%222%22 fill=%22%23fff%22 opacity=%22.55%22/%3E%3Crect x=%2272.5%22 y=%227%22 width=%225%22 height=%225%22 rx=%221%22 fill=%22%232c5a43%22/%3E%3Cellipse cx=%2275%22 cy=%2217%22 rx=%225%22 ry=%226.5%22 fill=%22%232FB45A%22/%3E%3Cellipse cx=%2273.5%22 cy=%2215%22 rx=%221.4%22 ry=%222%22 fill=%22%23fff%22 opacity=%22.55%22/%3E%3C/svg%3E"); }
+.xmas-lights::after{ background-image: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22120%22 height=%2230%22 viewBox=%220 0 120 30%22%3E%3Crect x=%2242.5%22 y=%227%22 width=%225%22 height=%225%22 rx=%221%22 fill=%22%232c5a43%22/%3E%3Cellipse cx=%2245%22 cy=%2217%22 rx=%225%22 ry=%226.5%22 fill=%22%23FFC83D%22/%3E%3Cellipse cx=%2243.5%22 cy=%2215%22 rx=%221.4%22 ry=%222%22 fill=%22%23fff%22 opacity=%22.55%22/%3E%3Crect x=%22102.5%22 y=%227%22 width=%225%22 height=%225%22 rx=%221%22 fill=%22%232c5a43%22/%3E%3Cellipse cx=%22105%22 cy=%2217%22 rx=%225%22 ry=%226.5%22 fill=%22%23FF2E78%22/%3E%3Cellipse cx=%22103.5%22 cy=%2215%22 rx=%221.4%22 ry=%222%22 fill=%22%23fff%22 opacity=%22.55%22/%3E%3C/svg%3E"); animation-delay: .9s; }
+@keyframes xmas-twinkle{ 0%,100%{ opacity:1; filter: drop-shadow(0 0 4px rgba(255,220,120,.9)); } 50%{ opacity:.35; filter:none; } }
+
+.xmas .hero{
+  background:
+    radial-gradient(circle at 12% 18%, rgba(255,255,255,.75) 0 3px, transparent 4px),
+    radial-gradient(circle at 78% 12%, rgba(255,255,255,.7) 0 4px, transparent 5px),
+    radial-gradient(circle at 90% 70%, rgba(255,255,255,.7) 0 3px, transparent 4px),
+    radial-gradient(circle at 30% 82%, rgba(255,255,255,.7) 0 4px, transparent 5px),
+    var(--sand);
+  padding-top: 64px;
+}
+.xmas .hero .eyebrow{ color: var(--xmas-green); }
+.xmas .swatch-float--1{ background: var(--xmas-red); }
+.xmas .swatch-float--2{ background: var(--xmas-gold); }
+.xmas .swatch-float--3{ background: var(--xmas-green); }
+.xmas .hero__photo{ outline: 6px solid #fff; box-shadow: 0 0 0 10px var(--xmas-red), var(--shadow-soft); }
+
+.xmas .checker-strip{
+  background-image: repeating-conic-gradient(var(--xmas-red) 0% 25%, var(--paper) 0% 50%);
+}
+.xmas .eyebrow{ color: var(--xmas-red); }
+.xmas .hero .eyebrow, .xmas .footer .eyebrow{ color: var(--xmas-green); }
+
+.xmas .footer{
+  background: var(--xmas-green); color:#fff; border-top: 6px solid var(--xmas-red); position:relative;
+}
+.xmas .footer a{ color:#fff; }
+.xmas .footer__copy{ opacity:.8; }
+.xmas .logo__img--footer{ background:#fff; border-radius: 20px; padding: 6px 14px; }
+.xmas-footer-msg{ font-family: var(--font-display); font-size: 22px; font-weight:700; margin:0; }
+
+.xmas-snow{ position:fixed; inset:0; width:100%; height:100%; pointer-events:none; z-index:35; }
