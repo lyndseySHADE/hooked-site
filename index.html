@@ -1,432 +1,488 @@
 <!DOCTYPE html>
-<html lang="en-GB">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Starting P1 at Portrush Primary School | Open Sessions</title>
-<meta name="description" content="Thinking about P1 for September 2027? Come and see Portrush Primary School at our Big Bedtime Read (Mon 30 Nov) or Open Morning (Tue 15 Dec).">
-<meta property="og:title" content="Starting P1 at Portrush Primary School">
-<meta property="og:description" content="Join us for our Big Bedtime Read on Monday 30 November or our Open Morning on Tuesday 15 December.">
-<!-- Share preview (WhatsApp, Facebook etc.)
-     IMPORTANT: once Netlify gives you the site address, replace
-     https://YOUR-SITE.netlify.app in the two lines marked ★ below. -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HOOKED | Handmade Crochet Bags in Northern Ireland</title>
+<meta name="description" content="Handmade to order crochet bags in your favourite colours. The Ibiza Bag, The Mykonos Bag and Becca's Big Beach Bag by HOOKED — made in Portstewart, Northern Ireland, shipped UK-wide.">
+<link rel="canonical" href="https://hookedbylm.netlify.app/">
+<meta name="robots" content="index, follow">
+
+<!-- Social share preview (WhatsApp, iMessage, Facebook, etc.) -->
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Portrush Primary School">
-<meta property="og:url" content="https://YOUR-SITE.netlify.app/">                        <!-- ★ -->
-<meta property="og:image" content="https://YOUR-SITE.netlify.app/images/share-image.png"> <!-- ★ -->
+<meta property="og:url" content="https://hookedbylm.netlify.app/">
+<meta property="og:title" content="HOOKED | Handmade Crochet Bags">
+<meta property="og:description" content="Handmade to order crochet bags in your favourite colours, by HOOKED.">
+<meta property="og:image" content="https://hookedbylm.netlify.app/assets/social-preview.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Portrush Primary School crest">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="images/crest.png">
+<meta name="twitter:title" content="HOOKED | Handmade Crochet Bags">
+<meta name="twitter:description" content="Handmade to order crochet bags in your favourite colours, by HOOKED.">
+<meta name="twitter:image" content="https://hookedbylm.netlify.app/assets/social-preview.jpg">
+
+<!-- Structured data: helps Google understand this as a local, handmade product business -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "HOOKED",
+  "description": "Handmade to order crochet bags in bold, custom colour combinations.",
+  "url": "https://hookedbylm.netlify.app/",
+  "image": "https://hookedbylm.netlify.app/assets/social-preview.jpg",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Portstewart",
+    "addressRegion": "Northern Ireland",
+    "addressCountry": "GB"
+  },
+  "sameAs": [
+    "https://www.instagram.com/HOOKED.by.LM"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "The Ibiza Bag",
+  "description": "Handmade to order crochet bag using premium T-shirt yarn, in custom colour combinations.",
+  "image": "https://hookedbylm.netlify.app/assets/hero-pink-outfit.jpg",
+  "brand": {
+    "@type": "Brand",
+    "name": "HOOKED"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://hookedbylm.netlify.app/#order",
+    "priceCurrency": "GBP",
+    "price": "30.00",
+    "availability": "https://schema.org/InStock"
+  }
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
-<style>
-  /* School colours, taken from the crest */
-  :root {
-    --primary: #00489c;
-    --primary-dark: #00336f;
-    --accent: #ffec00;
-    --soft: #eef4fb;
-    --text: #1f2933;
-    --muted: #52606d;
-    --white: #ffffff;
-    --radius: 14px;
-    --max: 1080px;
-  }
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body { font-family: "Nunito", system-ui, sans-serif; color: var(--text); line-height: 1.6; font-size: 1.05rem; background: var(--white); }
-  img { max-width: 100%; display: block; }
-  a { color: var(--primary); }
-  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 1.25rem; }
-  section { padding: 4.5rem 0; scroll-margin-top: 70px; }
-  h1, h2, h3 { line-height: 1.2; color: var(--primary-dark); font-weight: 800; }
-  h2 { font-size: clamp(1.7rem, 3.5vw, 2.3rem); margin-bottom: 1rem; }
-  h3 { font-size: 1.25rem; margin-bottom: .5rem; }
-  .lead { font-size: 1.15rem; color: var(--muted); max-width: 680px; }
-  .eyebrow { text-transform: uppercase; letter-spacing: .08em; font-size: .8rem; font-weight: 800; color: var(--primary); margin-bottom: .5rem; }
-
-  /* Placeholder marker: delete the class once real content is in */
-  .todo { background: #fff3c4; outline: 2px dashed #e0a800; border-radius: 4px; padding: 0 .25rem; }
-
-  /* Header */
-  header { position: sticky; top: 0; z-index: 10; background: var(--white); border-bottom: 1px solid #e4e7eb; }
-  .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
-  .logo { display: flex; align-items: center; gap: .7rem; font-weight: 800; color: var(--primary-dark); text-decoration: none; }
-  .logo img { height: 46px; width: auto; }
-  .nav ul { display: flex; gap: 1.5rem; list-style: none; }
-  .nav ul a { text-decoration: none; color: var(--text); font-weight: 600; }
-  .nav ul a:hover { color: var(--primary); }
-  @media (max-width: 820px) { .nav ul { display: none; } }
-
-  /* Buttons */
-  .btn { display: inline-block; padding: .85rem 1.5rem; border-radius: 999px; font-weight: 800; text-decoration: none; transition: transform .15s, background .15s; }
-  .btn:hover { transform: translateY(-2px); }
-  .btn-primary { background: var(--primary); color: var(--white); }
-  .btn-primary:hover { background: var(--primary-dark); }
-  .btn-light { background: var(--white); color: var(--primary-dark); border: 2px solid var(--primary); }
-  .btn-yellow { background: var(--accent); color: var(--primary-dark); }
-
-  /* Hero */
-  .hero { background: var(--primary); color: var(--white); padding: 5rem 0 4.5rem; }
-  .hero h1 { color: var(--white); font-size: clamp(2.2rem, 5vw, 3.3rem); margin-bottom: 1rem; }
-  .hero .eyebrow { color: var(--accent); }
-  .hero .lead { color: #dce7f5; }
-  .hero-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 3rem; align-items: center; }
-  .hero .btns { display: flex; gap: .8rem; flex-wrap: wrap; margin-top: 1.8rem; }
-  .hero .btn-light { background: transparent; color: var(--white); border-color: var(--white); }
-  .photo { background: #d9e2ec; border-radius: var(--radius); aspect-ratio: 4/3; display: grid; place-items: center; color: var(--muted); font-weight: 600; text-align: center; padding: 1rem; overflow: hidden; }
-  .photo img { width: 100%; height: 100%; object-fit: cover; }
-  .teacher { display: inline-flex; align-items: center; gap: 1rem; background: var(--white); padding: .7rem 1.4rem .7rem .7rem; border-radius: 999px; margin-bottom: 1.2rem; color: var(--primary-dark); line-height: 1.35; box-shadow: 0 4px 14px rgba(0,51,111,.08); }
-  .teacher img { width: 72px; height: 72px; border-radius: 50%; border: 3px solid var(--accent); object-fit: cover; }
-  .teacher strong { font-size: 1.15rem; }
-  .photo.square { aspect-ratio: 1/1; padding: 0; box-shadow: 0 12px 30px rgba(0,51,111,.15); }
-  .hero .photo { background: rgba(255,255,255,.12); color: #dce7f5; border: 2px dashed rgba(255,255,255,.35); }
-  .video-wrap { justify-self: center; width: 100%; max-width: 300px; text-align: center; }
-  .video-wrap video { width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 22px; border: 4px solid var(--accent); background: var(--primary-dark); box-shadow: 0 18px 40px rgba(0,0,0,.25); display: block; }
-  .video-caption { margin-top: .8rem; font-weight: 800; color: var(--accent); font-size: .95rem; }
-  @media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; } .video-wrap { max-width: 280px; } }
-
-  /* Events */
-  .events { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
-  .event { border: 2px solid #e4e7eb; border-radius: var(--radius); padding: 2rem; display: flex; flex-direction: column; }
-  .event.featured { border-color: var(--primary); }
-  .tag { align-self: flex-start; background: var(--accent); color: var(--primary-dark); font-size: .78rem; font-weight: 800; padding: .25rem .7rem; border-radius: 999px; margin-bottom: 1rem; }
-  .date { font-size: 1.6rem; font-weight: 800; color: var(--primary); line-height: 1.2; }
-  .time { font-weight: 700; color: var(--muted); margin: .2rem 0 1rem; }
-  .event p { flex: 1; }
-  .event .btn { margin-top: 1.5rem; align-self: flex-start; }
-  .note { margin-top: 1.5rem; background: var(--soft); border-radius: var(--radius); padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
-  @media (max-width: 760px) { .events { grid-template-columns: 1fr; } }
-
-  /* Prospectus sections */
-  .alt { background: var(--soft); }
-  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
-  .split.reverse .photo { order: 2; }
-  @media (max-width: 860px) { .split { grid-template-columns: 1fr; } .split.reverse .photo { order: 0; } }
-  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2rem; }
-  .card { background: var(--white); border-radius: var(--radius); padding: 1.6rem; border: 1px solid #e4e7eb; }
-  .card .icon { font-size: 1.8rem; margin-bottom: .6rem; }
-  @media (max-width: 860px) { .cards { grid-template-columns: 1fr; } }
-
-  .motto { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; color: var(--primary); margin: .5rem 0 1rem; }
-  .values { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.2rem; }
-  .values span { background: var(--white); border: 2px solid var(--primary); color: var(--primary-dark); font-weight: 800; padding: .4rem 1rem; border-radius: 999px; font-size: .95rem; }
-  .crest-panel { display: grid; place-items: center; }
-  .crest-panel img { max-width: 260px; }
-
-  /* Timeline */
-  .timeline { list-style: none; margin-top: 2rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
-  .timeline li { background: var(--white); border-top: 5px solid var(--primary); border-radius: var(--radius); padding: 1.4rem; box-shadow: 0 1px 0 #e4e7eb; }
-  .timeline li.key { border-top-color: var(--accent); }
-  .timeline .when { font-weight: 800; color: var(--primary); font-size: 1.1rem; }
-  @media (max-width: 860px) { .timeline { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 520px) { .timeline { grid-template-columns: 1fr; } }
-
-  /* FAQ */
-  details { border-bottom: 1px solid #e4e7eb; padding: 1.1rem 0; }
-  summary { font-weight: 800; cursor: pointer; color: var(--primary-dark); list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
-  summary::-webkit-details-marker { display: none; }
-  summary::after { content: "+"; font-size: 1.4rem; line-height: 1; }
-  details[open] summary::after { content: "–"; }
-  details p { margin-top: .6rem; color: var(--muted); }
-
-  /* Contact */
-  .contact { background: var(--primary); color: var(--white); }
-  .contact h2, .contact h3 { color: var(--white); }
-  .contact a { color: var(--white); }
-  .contact a.btn-yellow { color: var(--primary-dark); }
-  .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin: 2rem 0; }
-  @media (max-width: 760px) { .contact-grid { grid-template-columns: 1fr; } }
-
-  footer { padding: 2rem 0; font-size: .9rem; color: var(--muted); text-align: center; }
-  .credit { margin-top: .6rem; font-size: .75rem; color: #9aa5b1; letter-spacing: .02em; }
-  .credit a { color: inherit; text-decoration: none; border-bottom: 1px solid transparent; }
-  .credit a:hover { color: var(--primary); border-bottom-color: currentColor; }
-  .rsvp-link { margin-top: .9rem; font-weight: 800; text-decoration: none; }
-  .rsvp-link:hover { text-decoration: underline; }
-  /* Booking form */
-  .book-form { margin-top: 2rem; background: var(--white); border-radius: var(--radius); padding: 2rem; border: 1px solid #e4e7eb; display: grid; gap: 1.1rem; }
-  .book-form label { display: block; font-weight: 700; color: var(--primary-dark); }
-  .book-form label > input, .book-form label > textarea { display: block; margin-top: .4rem; }
-  .book-form .row { align-items: end; }
-  .book-form input[type=text], .book-form input[type=number], .book-form textarea { font: inherit; font-weight: 400; color: var(--text); padding: .7rem .85rem; border: 2px solid #cbd2d9; border-radius: 10px; width: 100%; }
-  .book-form input:focus, .book-form textarea:focus { outline: none; border-color: var(--primary); }
-  .book-form fieldset { border: none; display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
-  .book-form legend { font-weight: 800; color: var(--primary-dark); margin-bottom: .6rem; }
-  .book-form .check { display: flex; align-items: flex-start; gap: .7rem; font-weight: 400; border: 2px solid #cbd2d9; border-radius: 10px; padding: .9rem; cursor: pointer; color: var(--text); }
-  .book-form .check:has(input:checked) { border-color: var(--primary); background: var(--soft); }
-  .book-form .check input { width: 20px; height: 20px; margin-top: .15rem; accent-color: var(--primary); flex-shrink: 0; }
-  .book-form .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .book-form .opt { font-weight: 400; color: var(--muted); font-size: .9rem; }
-  .book-form .privacy { font-size: .9rem; color: var(--muted); }
-  .book-form button { justify-self: start; border: none; cursor: pointer; font: inherit; font-weight: 800; }
-  .book-form .error { color: #b42318; font-weight: 700; }
-  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; }
-  @media (max-width: 640px) { .book-form fieldset, .book-form .row { grid-template-columns: 1fr; } .book-form { padding: 1.4rem; } }
-</style>
+<!-- Google Analytics (GA4) -->
+<!-- Replace BOTH "G-XXXXXXXXXX" below with your real Measurement ID from Google Analytics (Admin > Data Streams > your site > Measurement ID). Until you do, this snippet won't send any data. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
 </head>
 <body>
 
-<header>
-  <div class="wrap nav">
-    <a class="logo" href="#top">
-      <img src="images/crest.png" alt="Portrush Primary School crest">
-      Portrush Primary School
+<!-- Hidden static form so Netlify's build bot can detect the form + file field. Real submissions happen via fetch() in script.js -->
+<form name="hooked-order" data-netlify="true" netlify-honeypot="company" enctype="multipart/form-data" hidden>
+  <input type="text" name="name">
+  <input type="email" name="email">
+  <input type="tel" name="phone">
+  <input type="text" name="bag_style">
+  <input type="text" name="order_type">
+  <textarea name="customisation"></textarea>
+  <input type="file" name="inspiration" multiple>
+  <input type="text" name="delivery_method">
+  <input type="text" name="address_line1">
+  <input type="text" name="address_line2">
+  <input type="text" name="town_city">
+  <input type="text" name="postcode">
+  <input type="text" name="order_ref">
+  <input type="text" name="company">
+</form>
+
+<header class="topbar">
+  <div class="wrap topbar__inner">
+    <a href="#top" class="logo"><img src="assets/hooked-logo-transparent.png" alt="HOOKED" class="logo__img"></a>
+    <nav class="nav">
+      <a href="#about">Our Bags</a>
+      <a href="#order">Order</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="topbar__insta" href="https://www.instagram.com/HOOKED.by.LM" target="_blank" rel="noopener" aria-label="HOOKED on Instagram">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.6"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"/></svg>
     </a>
-    <ul>
-      <li><a href="#open-sessions">Open sessions</a></li>
-      <li><a href="#about">Our school</a></li>
-      <li><a href="#p1">Life in P1</a></li>
-      <li><a href="#apply">Applying</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
   </div>
 </header>
+
+<a href="#order" class="announce-bar" id="announceBar" data-open="Becca's Bag now available for order! 🌈">Orders are paused while I prepare for the Christmas markets 🎄</a>
 
 <main id="top">
 
   <!-- HERO -->
   <section class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <p class="eyebrow">Thinking about P1 for September 2027?</p>
-        <h1>Come and see what makes Portrush Primary so special</h1>
-        <p class="lead">Starting school is a big milestone, and choosing the right school for your child is an important decision. Take a little look at our video to see what our wonderful P1 children get up to. From learning and exploring to playing, creating and making friends, every day brings something new.</p>
-        <div class="btns">
-          <a class="btn btn-yellow" href="#open-sessions">See open session dates</a>
-          <a class="btn btn-light" href="#book">RSVP now</a>
-        </div>
+    <div class="wrap hero__inner">
+      <div class="hero__copy">
+        <p class="eyebrow">Handmade in small batches</p>
+        <h1 class="hero__title">Bags Worth Getting Hooked On</h1>
+        <p class="hero__sub">Handmade to order, in your favourite colours.</p>
+        <a href="#order" class="btn btn--primary" data-order-btn>Order Yours</a>
       </div>
-      <div class="video-wrap">
-        <video controls playsinline preload="none" poster="images/p1-promo-poster.jpg">
-          <source src="images/p1-promo.mp4" type="video/mp4">
-          Your browser doesn't support video. <a href="images/p1-promo.mp4">Download the video</a>.
-        </video>
-        <p class="video-caption">▶ See what our P1s get up to</p>
+      <div class="hero__art">
+        <div class="hero__photo">
+          <img src="assets/hero-becca.jpg" alt="Becca's Big Beach Bag in pastel pink, blue and yellow, worn on the shoulder overlooking the coast" loading="eager">
+        </div>
+        <div class="hero__blob hero__blob--1"></div>
+        <div class="hero__blob hero__blob--2"></div>
+        <div class="swatch-float swatch-float--1"></div>
+        <div class="swatch-float swatch-float--2"></div>
+        <div class="swatch-float swatch-float--3"></div>
       </div>
     </div>
+    <svg class="scallop scallop--hero" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40 V20 Q15 0 30 20 T60 20 T90 20 T120 20 T150 20 T180 20 T210 20 T240 20 T270 20 T300 20 T330 20 T360 20 T390 20 T420 20 T450 20 T480 20 T510 20 T540 20 T570 20 T600 20 T630 20 T660 20 T690 20 T720 20 T750 20 T780 20 T810 20 T840 20 T870 20 T900 20 T930 20 T960 20 T990 20 T1020 20 T1050 20 T1080 20 T1110 20 T1140 20 T1170 20 T1200 20 V40 Z" fill="var(--paper)"/></svg>
   </section>
+  <div class="checker-strip" aria-hidden="true"></div>
 
-  <!-- OPEN SESSIONS -->
-  <section id="open-sessions">
+  <!-- ABOUT -->
+  <section id="about" class="about">
     <div class="wrap">
-      <p class="eyebrow">Open sessions</p>
-      <h2>Two chances to visit us</h2>
-      <p class="lead">We would love to welcome prospective P1 pupils and their parents/carers into school. Offering both a morning and an evening makes it easier for working parents and carers to come along. <strong>Come to one, or come to both!</strong> Everyone is very welcome. Please <a href="#book">RSVP</a> to help us facilitate numbers.</p>
+      <p class="eyebrow eyebrow--center">Our bags</p>
+      <h2 class="section-title">Made by hand. Made for summer.</h2>
 
-      <div class="events">
-        <article class="event">
-          <span class="tag">Evening</span>
-          <h3>Big Bedtime Read</h3>
-          <p class="date">Monday 30 November</p>
-          <p class="time">6:00pm – 7:00pm</p>
-          <p>Come along in the evening, wear your pyjamas and bring your favourite teddy bear if you wish! Explore our school and enjoy some bedtime story fun.</p>
-          <a class="btn btn-light" target="_blank" rel="noopener"
-             href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Big%20Bedtime%20Read%20at%20Portrush%20Primary%20School&dates=20261130T180000/20261130T190000&ctz=Europe/London&location=Portrush%20Primary%20School%2C%20Crocknamack%20Road%2C%20Portrush%20BT56%208JW">Add to calendar</a>
-          <a class="rsvp-link" href="#book">RSVP for this event →</a>
-        </article>
-
-        <article class="event featured">
-          <span class="tag">See us in action</span>
-          <h3>Open Morning</h3>
-          <p class="date">Tuesday 15 December</p>
-          <p class="time">9:30am – 11:00am</p>
-          <p>Visit during the school day and see our classrooms in action! Experience our welcoming and inclusive atmosphere for yourself.</p>
-          <a class="btn btn-primary" target="_blank" rel="noopener"
-             href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Open%20Morning%20at%20Portrush%20Primary%20School&dates=20261215T093000/20261215T110000&ctz=Europe/London&location=Portrush%20Primary%20School%2C%20Crocknamack%20Road%2C%20Portrush%20BT56%208JW">Add to calendar</a>
-          <a class="rsvp-link" href="#book">RSVP for this event →</a>
-        </article>
+      <div class="gallery">
+        <div class="gallery__item gallery__item--big">
+          <img src="assets/flatlay-full-bag.jpg" alt="The Ibiza Bag laid flat, showing its full shape and handles" loading="lazy">
+        </div>
+        <div class="gallery__item">
+          <img src="assets/detail-macro-hook.jpg" alt="Close up macro of the Ibiza Bag's handmade crochet stitches with crochet hook" loading="lazy">
+        </div>
+        <div class="gallery__item">
+          <img src="assets/lifestyle-car-red.jpg" alt="The Ibiza Bag worn on the arm, styled with a red jumper and gold jewellery" loading="lazy">
+        </div>
       </div>
 
-      <div class="note">
-        <div>
-          <h3>Can't make either date? We'd still love to meet you!</h3>
-          <p>Contact our school office to arrange an individual appointment to look around, meet us and experience for yourself what makes Portrush Primary such a special place to learn and belong. Children are very welcome too.</p>
+      <div class="about__grid">
+        <ul class="features">
+          <li><svg class="loop-icon" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7" fill="none" stroke="var(--orange)" stroke-width="2.4"/></svg> Handmade using premium T-shirt yarn</li>
+          <li><svg class="loop-icon" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7" fill="none" stroke="var(--pink)" stroke-width="2.4"/></svg> Lightweight, easy to carry all day</li>
+          <li><svg class="loop-icon" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7" fill="none" stroke="var(--sun)" stroke-width="2.4"/></svg> Custom colour combinations available</li>
+          <li><svg class="loop-icon" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7" fill="none" stroke="var(--orange)" stroke-width="2.4"/></svg> Made to order, just for you</li>
+          <li><svg class="loop-icon" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7" fill="none" stroke="var(--pink)" stroke-width="2.4"/></svg> Perfect for holidays, brunch, shopping &amp; everyday</li>
+        </ul>
+
+        <div class="price-card">
+          <span class="price-card__scallop" aria-hidden="true">
+            <svg viewBox="0 0 200 16" preserveAspectRatio="none"><path d="M0 16V8Q6.25 0 12.5 8T25 8T37.5 8T50 8T62.5 8T75 8T87.5 8T100 8T112.5 8T125 8T137.5 8T150 8T162.5 8T175 8T187.5 8T200 8V16Z" fill="var(--sand)"/></svg>
+          </span>
+          <p class="price-card__label">The Ibiza Bag</p>
+          <p class="price-card__amount">£30</p>
+          <p class="price-card__note">Made to order · 5 working days if in stock</p>
+          <a href="#order" class="btn btn--primary btn--block" data-order-btn>Order Yours</a>
         </div>
-        <a class="btn btn-primary" href="#contact">Arrange a visit</a>
       </div>
     </div>
   </section>
 
-  <!-- BOOKING FORM: emails each booking straight to the school via FormSubmit (formsubmit.co).
-       Nothing is stored on the website. The first time the form is used, FormSubmit sends
-       an activation email to the school address. Someone at school must click "Activate". -->
-  <section id="book" class="alt">
-    <div class="wrap" style="max-width: 760px;">
-      <p class="eyebrow">Let us know you're coming</p>
-      <h2>Please RSVP</h2>
-      <p class="lead">This helps us to facilitate numbers. Everyone is very welcome, and it only takes a minute.</p>
+  <!-- MYKONOS INTRO -->
+  <section class="style-banner">
+    <div class="wrap gift-banner__inner">
+      <div class="gift-banner__photo">
+        <img src="assets/mykonos-flatlay-true.jpg" alt="The Mykonos Bag, handmade in shades of blue and cream" loading="lazy">
+      </div>
+      <div class="gift-banner__copy">
+        <p class="eyebrow">New style</p>
+        <h2 class="gift-banner__title">The Mykonos Bag</h2>
+        <p class="gift-banner__text">Blue on blue on blue, with hits of cream. Same premium T-shirt yarn, same made-to-order magic, a brand new colour story.</p>
+        <p class="style-banner__price">£30</p>
+        <a href="#order" class="btn btn--primary" data-order-btn>Order Yours</a>
+      </div>
+    </div>
+  </section>
 
-      <!-- ★ TESTING: RSVPs currently go to Lyndsey. When testing is done, change the address below to:
-           https://formsubmit.co/info@portrushps.portrush.ni.sch.uk -->
-      <form class="book-form" method="POST" action="https://formsubmit.co/lyndsey@shadesocialmedia.info">
-        <input type="hidden" name="_subject" value="Open session RSVP - Portrush Primary">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <!-- ★ Replace YOUR-SITE.netlify.app once the site is live -->
-        <input type="hidden" name="_next" value="https://YOUR-SITE.netlify.app/thanks.html">
-        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off">
+  <!-- BECCA'S BAG INTRO -->
+  <section class="style-banner">
+    <div class="wrap gift-banner__inner">
+      <div class="gift-banner__photo">
+        <img src="assets/becca-beach-back.jpg" alt="Becca's Big Beach Bag, handmade in pastel pink, blue and yellow" loading="lazy">
+      </div>
+      <div class="gift-banner__copy">
+        <p class="eyebrow">New style</p>
+        <h2 class="gift-banner__title">Becca's Big Beach Bag</h2>
+        <p class="gift-banner__text">A roomy pastel rainbow of pink, blue and yellow, big enough for everything a beach day needs. Same premium T-shirt yarn, same made-to-order magic.</p>
+        <p class="style-banner__price">£50</p>
+        <p class="style-banner__lead">Lead time may be slightly longer due to the size of this bag. Please allow up to 10 working days.</p>
+        <a href="#order" class="btn btn--primary" data-order-btn>Order Yours</a>
+      </div>
+    </div>
+  </section>
 
-        <fieldset>
-          <legend>Which event(s) will you come to?</legend>
-          <label class="check"><input type="checkbox" name="Big Bedtime Read" value="Yes - Mon 30 Nov, 6-7pm"> <span><strong>Big Bedtime Read</strong><br>Monday 30 November, 6:00–7:00pm</span></label>
-          <label class="check"><input type="checkbox" name="Open Morning" value="Yes - Tue 15 Dec, 9.30-11am"> <span><strong>Open Morning</strong><br>Tuesday 15 December, 9:30–11:00am</span></label>
-        </fieldset>
+  <!-- GALLERY -->
+  <section class="showcase">
+    <div class="wrap">
+      <p class="eyebrow eyebrow--center">The gallery</p>
+      <h2 class="section-title section-title--center">A few more favourites</h2>
+    </div>
+    <div class="showcase__strip">
+      <img src="assets/marina-dock.jpg" alt="An Ibiza Bag resting on a table by a marina at sunset" loading="lazy">
+      <img src="assets/hero-fruit-market.jpg" alt="An Ibiza Bag carried through a fruit market" loading="lazy">
+      <img src="assets/flatlay-pavers.jpg" alt="An Ibiza Bag coiled on stone pavers" loading="lazy">
+      <img src="assets/cocktail-lifestyle.jpg" alt="An Ibiza Bag on a table beside a cocktail" loading="lazy">
+      <img src="assets/flatlay-wood-handles.jpg" alt="An Ibiza Bag laid flat with handles up" loading="lazy">
+      <img src="assets/detail-flatlay.jpg" alt="Close up of handmade crochet stitch detail" loading="lazy">
+      <img src="assets/ibiza-vs-mykonos.jpg" alt="The Ibiza Bag and The Mykonos Bag side by side" loading="lazy">
+      <img src="assets/gallery-pink-green-1.jpg" alt="A HOOKED bag in pink and green, held up" loading="lazy">
+      <img src="assets/gallery-pink-orange-red.jpg" alt="A HOOKED bag in pink, orange, red and yellow" loading="lazy">
+      <img src="assets/gallery-red-pink-detail.jpg" alt="Close up of a HOOKED bag in red and pink on a sofa" loading="lazy">
+      <img src="assets/gallery-red-pink-full.jpg" alt="A HOOKED bag in red and pink, resting on a sofa" loading="lazy">
+      <img src="assets/gallery-rainbow.jpg" alt="A HOOKED bag in a rainbow of pink, orange, lime and blue" loading="lazy">
+      <img src="assets/gallery-rainbow-handle.jpg" alt="Close up of a rainbow HOOKED bag handle" loading="lazy">
+      <img src="assets/mykonos-flatlay.jpg" alt="A personalised Mykonos Bag in blue, cream and gold" loading="lazy">
+      <img src="assets/becca-beach-full.jpg" alt="Becca's Big Beach Bag worn on the shoulder, overlooking the coast" loading="lazy">
+      <img src="assets/becca-beach-back2.jpg" alt="Becca's Big Beach Bag carried on a scenic walkway" loading="lazy">
+    </div>
+  </section>
 
-        <div class="row">
-          <label>Your name<input type="text" name="Name" required autocomplete="name"></label>
-          <label>Email or phone<input type="text" name="Contact" required autocomplete="email"></label>
+  <!-- GIFTING BANNER -->
+  <section class="gift-banner">
+    <div class="wrap gift-banner__inner">
+      <div class="gift-banner__photo">
+        <img src="assets/gift-newspaper.jpg" alt="A handwritten sign reading Buy Her A Crochet Bag" loading="lazy">
+      </div>
+      <div class="gift-banner__copy">
+        <p class="eyebrow">Hint hint</p>
+        <h2 class="gift-banner__title">Buy her a crochet bag 💌</h2>
+        <p class="gift-banner__text">Birthdays, anniversaries, "just because" ~ the Ibiza Bag makes a gift she'll actually use. Forward this page, we won't tell.</p>
+        <a href="#order" class="btn btn--primary" data-order-btn>Order Yours</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORDER -->
+  <section id="order" class="order">
+    <div class="wrap wrap--narrow">
+      <p class="eyebrow eyebrow--center">Order online</p>
+      <h2 class="section-title section-title--center">Let's make it yours</h2>
+      <p class="order__intro">View the bag, tell me your dream design, upload inspiration, then pay securely. That's it.</p>
+
+      <div id="ordersPausedNote" class="paused-note" hidden>
+        <p class="paused-note__title">Orders are paused for now 🎄</p>
+        <p>I'm busy making bags for the Christmas markets, so I'm not taking online orders at the moment. Follow <a href="https://www.instagram.com/HOOKED.by.LM" target="_blank" rel="noopener">@HOOKED.by.LM</a> on Instagram to be the first to know when orders reopen and to see where I'll be selling.</p>
+      </div>
+
+      <form id="orderForm" class="order-card" novalidate>
+
+        <div class="field">
+          <label>Choose your style</label>
+          <div class="radio-group">
+            <label class="radio-pill">
+              <input type="radio" name="bag_style" value="ibiza" checked>
+              <span>The Ibiza Bag · £30</span>
+            </label>
+            <label class="radio-pill">
+              <input type="radio" name="bag_style" value="mykonos">
+              <span>The Mykonos Bag · £30</span>
+            </label>
+            <label class="radio-pill">
+              <input type="radio" name="bag_style" value="becca">
+              <span>Becca's Big Beach Bag · £50</span>
+            </label>
+            <label class="radio-pill">
+              <input type="radio" name="bag_style" value="coming_soon">
+              <span>New Style · Coming Soon</span>
+            </label>
+          </div>
         </div>
-        <div class="row">
-          <label>Number of adults<input type="number" name="Adults" min="1" max="6" value="1" required></label>
-          <label>Number of children<input type="number" name="Children" min="0" max="6" value="1" required></label>
-        </div>
-        <label>Child's current nursery or pre-school <span class="opt">(optional)</span><input type="text" name="Nursery"></label>
-        <label>Anything we should know? <span class="opt">(optional, e.g. access needs)</span><textarea name="Message" rows="3"></textarea></label>
 
-        <p class="privacy">Your details go straight to the school office. We'll only use them to plan the open sessions and won't share them with anyone else.</p>
-        <button class="btn btn-primary" type="submit">Send RSVP</button>
+        <p id="beccaLeadNote" class="lead-note" hidden>⏳ Becca's Big Beach Bag is a big one, so the lead time may be slightly longer. Please allow up to 10 working days.</p>
+
+        <div id="comingSoonNote" class="coming-soon-note" hidden>
+          <div class="coming-soon-note__placeholder" aria-hidden="true">
+            <span>📷</span>
+            <span>Photo coming soon</span>
+          </div>
+          <p>This style isn't ready to order just yet. Follow <a href="https://www.instagram.com/HOOKED.by.LM" target="_blank" rel="noopener">@HOOKED.by.LM</a> to be the first to know when it drops.</p>
+        </div>
+
+        <div id="orderFormRest">
+
+        <div class="field-row">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required autocomplete="email">
+          </div>
+        </div>
+        <div class="field">
+          <label for="phone">Phone number</label>
+          <input id="phone" name="phone" type="tel" required autocomplete="tel">
+        </div>
+
+        <div class="field">
+          <label>How would you like your bag?</label>
+          <div class="radio-group">
+            <label class="radio-pill">
+              <input type="radio" name="order_type" value="as_is" checked>
+              <span>Order as is</span>
+            </label>
+            <label class="radio-pill">
+              <input type="radio" name="order_type" value="personalise">
+              <span>Personalise (+£5)</span>
+            </label>
+          </div>
+        </div>
+
+        <div id="personaliseFields" class="personalise-fields" hidden>
+          <div class="field">
+            <p class="examples-label">A few past colour combinations</p>
+            <div class="examples-strip">
+              <figure class="examples-strip__item">
+                <img src="assets/example-red-orange-gold.jpg" alt="Ibiza Bag in red and orange with gold" loading="lazy">
+                <figcaption>Red &amp; orange, with gold</figcaption>
+              </figure>
+              <figure class="examples-strip__item">
+                <img src="assets/example-brown-butter.jpg" alt="Ibiza Bag in brown and butter yellow" loading="lazy">
+                <figcaption>Brown &amp; butter yellow</figcaption>
+              </figure>
+              <figure class="examples-strip__item">
+                <img src="assets/example-blue-cream-gold.jpg" alt="Ibiza Bag in blue shades and cream with gold" loading="lazy">
+                <figcaption>Blue shades &amp; cream, with gold</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="field">
+            <label for="customisation">Describe your dream bag 💖</label>
+            <p class="field__hint">Tell me your favourite colours, whether you'd like a bow, and anything else you'd love me to include. You can also upload inspiration photos below.</p>
+            <textarea id="customisation" name="customisation" rows="4" placeholder="Tell me your dream colour combination, add a bow if you'd like one, or include any other requests. Feel free to describe it or upload inspiration photos."></textarea>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="inspiration">Upload inspiration images</label>
+          <input id="inspiration" name="inspiration" type="file" accept="image/*" multiple>
+          <div id="fileList" class="file-list"></div>
+        </div>
+
+        <div class="field">
+          <label>Delivery</label>
+          <div class="radio-group">
+            <label class="radio-pill">
+              <input type="radio" name="delivery_method" value="shipping" checked>
+              <span>UK Shipping (+£3.99)</span>
+            </label>
+            <label class="radio-pill">
+              <input type="radio" name="delivery_method" value="collection">
+              <span>Collection</span>
+            </label>
+          </div>
+        </div>
+
+        <div id="shippingFields" class="shipping-fields">
+          <div class="field">
+            <label for="address_line1">Address line 1</label>
+            <input id="address_line1" name="address_line1" type="text">
+          </div>
+          <div class="field">
+            <label for="address_line2">Address line 2</label>
+            <input id="address_line2" name="address_line2" type="text">
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="town_city">Town / City</label>
+              <input id="town_city" name="town_city" type="text">
+            </div>
+            <div class="field">
+              <label for="postcode">Postcode</label>
+              <input id="postcode" name="postcode" type="text">
+            </div>
+          </div>
+        </div>
+
+        <p id="collectionNote" class="collection-note" hidden>I'll be in touch to arrange a collection time in Portstewart. 💌</p>
+
+        <div class="order-summary">
+          <div class="order-summary__row">
+            <span id="baseBagName">The Ibiza Bag</span>
+            <span id="baseBagPrice">£30.00</span>
+          </div>
+          <div class="order-summary__row" id="personaliseSummaryRow" hidden>
+            <span>Personalisation</span>
+            <span>+£5.00</span>
+          </div>
+          <div class="order-summary__row" id="shippingSummaryRow">
+            <span>UK Shipping (2nd class)</span>
+            <span>+£3.99</span>
+          </div>
+          <div class="order-summary__row order-summary__row--total">
+            <span>Total</span>
+            <span id="orderTotal">£30.00</span>
+          </div>
+        </div>
+
+        <button type="submit" id="payBtn" class="btn btn--primary btn--block btn--large">
+          <span id="payBtnText">Pay &amp; Place Order · £30</span>
+        </button>
+        <p class="pay-methods">Apple Pay · Google Pay · Debit / Credit Card, via Stripe</p>
+        <p id="formError" class="form-error" hidden></p>
+
+        </div>
       </form>
     </div>
   </section>
 
-  <!-- ETHOS -->
-  <section id="about" class="alt">
-    <div class="wrap split">
-      <div class="crest-panel">
-        <img src="images/crest.png" alt="Portrush Primary School crest">
-      </div>
-      <div>
-        <p class="eyebrow">Our school</p>
-        <p class="motto">Nurturing Potential, Fostering Belonging</p>
-        <p>Portrush Primary School is a welcoming and supportive place where all children feel valued, safe and inspired. We focus on individual support and creating a happy, secure environment where every child is empowered to reach their full potential.</p>
-        <div class="values">
-          <span>Respect &amp; Responsibility</span>
-          <span>Friendship &amp; Inclusivity</span>
-          <span>Honesty &amp; Kindness</span>
-        </div>
-        <p style="margin-top:1.4rem;">Our Acting Principal, <strong>Mrs Natalie Parlato-Taylor</strong>, and all our staff look forward to welcoming you.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHY US -->
-  <section>
-    <div class="wrap">
-      <p class="eyebrow">Why Portrush Primary?</p>
-      <h2>A school at the heart of our community</h2>
-      <div class="cards">
-        <div class="card"><div class="icon">🤝</div><h3>Every child included</h3><p>Our teaching is differentiated and inclusive for all abilities, and our school listens to pupil voice.</p></div>
-        <div class="card"><div class="icon">🏏</div><h3>Clubs &amp; sport</h3><p>As children move up the school there's hockey, netball, rugby, football, cricket and a Minecraft Education club to enjoy.</p></div>
-        <div class="card"><div class="icon">🕒</div><h3>After School Club</h3><p>Our on-site After School Club runs 2pm–5pm in term time, with snacks, games, the hall, the computer suite and outdoor play.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- LIFE IN P1 -->
-  <section id="p1" class="alt">
-    <div class="wrap split reverse">
-      <div>
-        <p class="eyebrow">Life in P1</p>
-        <h2>Settling in, step by step</h2>
-        <div class="teacher">
-          <img src="images/miss-laverty.jpg" alt="Miss K. Laverty, P1 teacher" loading="lazy">
-          <p>Meet our P1 teacher<br><strong>Miss K. Laverty</strong></p>
-        </div>
-        <p>Starting school should feel exciting, not daunting. Our P1 children learn through play, exploring and lots of stories. This term they have already enjoyed an autumn walk and library visits with P2.</p>
-        <p style="margin-top:1rem;" class="todo">Add how you help new P1s settle: induction visits, staggered start, buddies, class size.</p>
-      </div>
-      <div class="photo square">
-        <img src="images/welcome-p1.jpg" alt="Our P1 class waving with their teacher in front of a 'Welcome to Primary 1' screen" loading="lazy">
-      </div>
-    </div>
-  </section>
-
-  <!-- APPLYING -->
-  <section id="apply">
-    <div class="wrap">
-      <p class="eyebrow">Applying for P1</p>
-      <h2>Key dates for September 2027</h2>
-      <p class="lead">P1 applications are made online through the Education Authority (EA). Every parent must apply, even if your child attends a nursery unit.</p>
-      <ol class="timeline">
-        <li><p class="when">9 December 2026</p><p>Primary school admissions criteria published on the EA website.</p></li>
-        <li class="key"><p class="when">6 January 2027</p><p>Online applications open on EA Connect at 12 noon.</p></li>
-        <li class="key"><p class="when">20 January 2027</p><p>Applications close at 12 noon. Please don't miss the deadline.</p></li>
-        <li><p class="when">18 March 2027</p><p>Outcomes issued to parents by email or letter.</p></li>
-      </ol>
-      <p style="margin-top:2rem; display:flex; gap:.8rem; flex-wrap:wrap;">
-        <a class="btn btn-primary" href="https://www.eani.org.uk/parents/pupil-applications-and-grants/admissions/admissions-key-dates" target="_blank" rel="noopener">EA admissions key dates</a>
-        <a class="btn btn-light" href="https://www.portrushps.com/parents/ouradmissions-criteria/" target="_blank" rel="noopener">Our admissions criteria</a>
-      </p>
-    </div>
-  </section>
-
   <!-- FAQ -->
-  <section id="faq" class="alt">
-    <div class="wrap" style="max-width: 800px;">
-      <p class="eyebrow">Questions</p>
-      <h2>Frequently asked questions</h2>
-      <details>
-        <summary>Do I need to book for the open sessions?</summary>
-        <p>You don't have to, as everyone is very welcome, but it really helps us to know roughly how many families to expect. Please <a href="#book">RSVP</a> to help us facilitate numbers.</p>
+  <section id="faq" class="faq">
+    <div class="wrap wrap--narrow">
+      <p class="eyebrow eyebrow--center">Questions</p>
+      <h2 class="section-title section-title--center">FAQ</h2>
+
+      <details class="faq-item" open>
+        <summary>How long will my bag take?</summary>
+        <p>If the colours you'd like are already in stock, I can have your bag ready in 5 working days. Becca's Big Beach Bag is larger, so please allow up to 10 working days. For a fully customised design, turnaround varies, so <a href="https://www.instagram.com/HOOKED.by.LM" target="_blank" rel="noopener">DM me on Instagram</a> and we'll work out a timeline together.</p>
       </details>
-      <details>
-        <summary>Can my child come with me?</summary>
-        <p>Yes, please bring them! Both events and individual appointments are for prospective P1 children and their parents/carers. For the Big Bedtime Read, they can even come in their pyjamas with their favourite teddy.</p>
+      <details class="faq-item">
+        <summary>Can I choose any colours?</summary>
+        <p>Yes! Describe your dream combination in the order form, or send inspiration photos, and I'll match it as closely as possible using premium T-shirt yarn.</p>
       </details>
-      <details>
-        <summary>Is there after-school care?</summary>
-        <p>Yes. Our After School Club is based in the school's Community Room and runs 2pm–5pm during term time, with snacks included. Places are booked in advance through ParentPay. <a href="https://www.portrushps.com/our-school/the-hop-after-school-care-facility/" target="_blank" rel="noopener">See prices and details</a>.</p>
+      <details class="faq-item">
+        <summary>Can I send inspiration photos?</summary>
+        <p>Absolutely, just upload them in the order form. Pinterest screenshots, outfit photos or a favourite sunset all help me get your bag right.</p>
       </details>
-      <details>
-        <summary>Is there a breakfast club?</summary>
-        <p class="todo">Confirm, or remove this question.</p>
+      <details class="faq-item">
+        <summary>Do you ship across the UK?</summary>
+        <p>Yes, UK shipping is available at checkout. Your bag is carefully packaged and tracked.</p>
       </details>
-      <details>
-        <summary>When do I apply for a P1 place?</summary>
-        <p>Applications open on EA Connect at 12 noon on 6 January 2027 and close at 12 noon on 20 January 2027. <a href="#apply">See all key dates</a>.</p>
+      <details class="faq-item">
+        <summary>Can I collect locally?</summary>
+        <p>Yes, choose Collection at checkout and I'll be in touch to arrange a time that suits you.</p>
       </details>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="contact">
+  <!-- INSTAGRAM FEED -->
+  <!-- Paste your widget embed code (from Elfsight, SnapWidget, etc.) inside #instagramFeed below. -->
+  <section class="insta-feed">
     <div class="wrap">
-      <h2>Get in touch</h2>
-      <p>We'd love to show you around. Contact the school office to ask a question or arrange an individual visit.</p>
-      <div class="contact-grid">
-        <div><h3>Phone</h3><p><a href="tel:+442870822333">028 7082 2333</a></p></div>
-        <div><h3>Email</h3><p><a href="mailto:info@portrushps.portrush.ni.sch.uk" style="word-break:break-all;">info@portrushps.portrush.ni.sch.uk</a></p></div>
-        <div><h3>Address</h3><p>Portrush Primary School<br>Crocknamack Road<br>Portrush, BT56 8JW<br><a href="https://www.google.com/maps/search/?api=1&query=Portrush+Primary+School+Crocknamack+Road+Portrush" target="_blank" rel="noopener">View on map</a></p></div>
+      <p class="eyebrow eyebrow--center">Follow along</p>
+      <h2 class="section-title section-title--center">@HOOKED.by.LM</h2>
+      <div id="instagramFeed" class="insta-feed__embed">
+        <!-- Elfsight Instagram Feed | Hooked Insta -->
+        <script src="https://elfsightcdn.com/platform.js" async></script>
+        <div class="elfsight-app-07ad34d8-2f05-43bc-8690-72147aeda198" data-elfsight-app-lazy></div>
       </div>
-      <a class="btn btn-yellow" href="tel:+442870822333">Call to book a visit</a>
     </div>
   </section>
 
 </main>
 
-<footer>
-  <div class="wrap">
-    <p style="font-weight:800;color:var(--primary-dark);margin-bottom:.4rem;">Nurturing Potential, Fostering Belonging</p>
-    © Portrush Primary School · <a href="https://www.portrushps.com/" target="_blank" rel="noopener">Visit our main website</a>
-    <p class="credit">Site designed by <a href="https://shadesocialmedia.info" target="_blank" rel="noopener">SHADE Social Media Management</a></p>
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <img src="assets/hooked-logo-transparent.png" alt="HOOKED" class="logo__img logo__img--footer">
+    <div class="footer__links">
+      <a href="https://www.instagram.com/HOOKED.by.LM" target="_blank" rel="noopener">Instagram</a>
+      <a href="mailto:Lyndsey@Shadesocialmedia.info">Lyndsey@Shadesocialmedia.info</a>
+    </div>
+    <p class="footer__copy">© <span id="year"></span> HOOKED. All rights reserved.</p>
   </div>
 </footer>
 
-<script>
-  document.querySelector('.book-form').addEventListener('submit', function (e) {
-    var ticked = this.querySelectorAll('fieldset input:checked').length;
-    var msg = this.querySelector('.error');
-    if (!ticked) {
-      e.preventDefault();
-      if (!msg) { msg = document.createElement('p'); msg.className = 'error'; this.querySelector('fieldset').after(msg); }
-      msg.textContent = 'Please tick at least one event.';
-    }
-  });
-</script>
+<script src="script.js"></script>
 </body>
 </html>
