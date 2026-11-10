@@ -592,3 +592,20 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   line-height: 1.5;
 }
 .lead-note[hidden]{ display:none !important; }
+
+/* Orders paused notice */
+.paused-note{
+  background: var(--sand);
+  border-radius: var(--radius-lg);
+  padding: 36px 28px;
+  text-align: center;
+  line-height: 1.6;
+}
+.paused-note[hidden]{ display:none !important; }
+.paused-note__title{
+  font-family: var(--font-display);
+  font-size: 26px;
+  margin: 0 0 10px;
+}
+.paused-note p{ margin: 0 0 10px; }
+.paused-note a{ color: var(--pink-deep); font-weight: 600; }

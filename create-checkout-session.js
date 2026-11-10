@@ -1,18 +1,38 @@
 // Netlify Function: create-checkout-session
-// Creates a Stripe Checkout Session for the Ibiza Bag.
+// Creates a Stripe Checkout Session for whichever HOOKED bag style was chosen.
 // Apple Pay / Google Pay are shown automatically by Stripe Checkout
-// whenever the shopper's device/browser supports them — no extra
+// whenever the shopper's device/browser supports them, no extra
 // config needed beyond enabling them in the Stripe Dashboard
 // (Settings > Payment methods).
 
 const Stripe = require('stripe');
 
-const PRICE_GBP_PENCE = 8500; // £85.00 — change if the price changes
+// Add a new style here (and in script.js's BAG_STYLES) whenever a new
+// bag becomes available to order. Prices are in pence.
+const BAG_STYLES = {
+  ibiza:   { name: 'The Ibiza Bag',         priceGbpPence: 3000 },
+  mykonos: { name: 'The Mykonos Bag',       priceGbpPence: 3000 },
+  becca:   { name: "Becca's Big Beach Bag", priceGbpPence: 5000 },
+};
+
+const PERSONALISE_GBP_PENCE = 500; // £5.00 personalisation upcharge
+const SHIPPING_GBP_PENCE = 399; // £3.99 UK 2nd class Royal Mail
 const SITE_URL = process.env.URL || 'http://localhost:8888';
+
+// true = online orders are paused (Christmas markets). Set to false to reopen,
+// and change ORDERS_PAUSED in script.js to match.
+const ORDERS_PAUSED = true;
 
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method Not Allowed' };
+  }
+
+  if (ORDERS_PAUSED) {
+    return {
+      statusCode: 503,
+      body: JSON.stringify({ error: 'Online orders are paused while HOOKED prepares for the Christmas markets.' }),
+    };
   }
 
   if (!process.env.STRIPE_SECRET_KEY) {
@@ -25,28 +45,63 @@ exports.handler = async (event) => {
   const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 
   try {
-    const { orderRef, name, email } = JSON.parse(event.body || '{}');
+    const { orderRef, name, email, bagStyle, personalise, shipping } = JSON.parse(event.body || '{}');
+
+    const style = BAG_STYLES[bagStyle] || BAG_STYLES.ibiza;
+
+    const lineItems = [
+      {
+        price_data: {
+          currency: 'gbp',
+          unit_amount: style.priceGbpPence,
+          product_data: {
+            name: style.name,
+            description: 'Handmade to order crochet bag, HOOKED',
+          },
+        },
+        quantity: 1,
+      },
+    ];
+
+    if (personalise) {
+      lineItems.push({
+        price_data: {
+          currency: 'gbp',
+          unit_amount: PERSONALISE_GBP_PENCE,
+          product_data: {
+            name: 'Personalisation',
+            description: 'Custom colour combination, bow, and other requests',
+          },
+        },
+        quantity: 1,
+      });
+    }
+
+    if (shipping) {
+      lineItems.push({
+        price_data: {
+          currency: 'gbp',
+          unit_amount: SHIPPING_GBP_PENCE,
+          product_data: {
+            name: 'UK Shipping',
+            description: 'Royal Mail 2nd class',
+          },
+        },
+        quantity: 1,
+      });
+    }
 
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
       payment_method_types: ['card'], // Apple Pay / Google Pay surface automatically via 'card'
       customer_email: email,
-      line_items: [
-        {
-          price_data: {
-            currency: 'gbp',
-            unit_amount: PRICE_GBP_PENCE,
-            product_data: {
-              name: 'The Ibiza Bag',
-              description: 'Handmade to order crochet bag — HOOKED',
-            },
-          },
-          quantity: 1,
-        },
-      ],
+      line_items: lineItems,
       metadata: {
         order_ref: orderRef || '',
         customer_name: name || '',
+        bag_style: style.name,
+        personalised: personalise ? 'yes' : 'no',
+        shipping: shipping ? 'yes' : 'no',
       },
       success_url: `${SITE_URL}/success.html?order_ref=${encodeURIComponent(orderRef || '')}&session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${SITE_URL}/#order`,

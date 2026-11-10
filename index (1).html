@@ -110,7 +110,7 @@
   </div>
 </header>
 
-<a href="#order" class="announce-bar">Becca's Bag now available for order! 🌈</a>
+<a href="#order" class="announce-bar" id="announceBar" data-open="Becca's Bag now available for order! 🌈">Orders are paused while I prepare for the Christmas markets 🎄</a>
 
 <main id="top">
 
@@ -121,7 +121,7 @@
         <p class="eyebrow">Handmade in small batches</p>
         <h1 class="hero__title">Bags Worth Getting Hooked On</h1>
         <p class="hero__sub">Handmade to order, in your favourite colours.</p>
-        <a href="#order" class="btn btn--primary">Order Yours</a>
+        <a href="#order" class="btn btn--primary" data-order-btn>Order Yours</a>
       </div>
       <div class="hero__art">
         <div class="hero__photo">
@@ -172,7 +172,7 @@
           <p class="price-card__label">The Ibiza Bag</p>
           <p class="price-card__amount">£30</p>
           <p class="price-card__note">Made to order · 5 working days if in stock</p>
-          <a href="#order" class="btn btn--primary btn--block">Order Yours</a>
+          <a href="#order" class="btn btn--primary btn--block" data-order-btn>Order Yours</a>
         </div>
       </div>
     </div>
@@ -189,7 +189,7 @@
         <h2 class="gift-banner__title">The Mykonos Bag</h2>
         <p class="gift-banner__text">Blue on blue on blue, with hits of cream. Same premium T-shirt yarn, same made-to-order magic, a brand new colour story.</p>
         <p class="style-banner__price">£30</p>
-        <a href="#order" class="btn btn--primary">Order Yours</a>
+        <a href="#order" class="btn btn--primary" data-order-btn>Order Yours</a>
       </div>
     </div>
   </section>
@@ -206,7 +206,7 @@
         <p class="gift-banner__text">A roomy pastel rainbow of pink, blue and yellow, big enough for everything a beach day needs. Same premium T-shirt yarn, same made-to-order magic.</p>
         <p class="style-banner__price">£50</p>
         <p class="style-banner__lead">Lead time may be slightly longer due to the size of this bag. Please allow up to 10 working days.</p>
-        <a href="#order" class="btn btn--primary">Order Yours</a>
+        <a href="#order" class="btn btn--primary" data-order-btn>Order Yours</a>
       </div>
     </div>
   </section>
@@ -247,7 +247,7 @@
         <p class="eyebrow">Hint hint</p>
         <h2 class="gift-banner__title">Buy her a crochet bag 💌</h2>
         <p class="gift-banner__text">Birthdays, anniversaries, "just because" ~ the Ibiza Bag makes a gift she'll actually use. Forward this page, we won't tell.</p>
-        <a href="#order" class="btn btn--primary">Order Yours</a>
+        <a href="#order" class="btn btn--primary" data-order-btn>Order Yours</a>
       </div>
     </div>
   </section>
@@ -258,6 +258,11 @@
       <p class="eyebrow eyebrow--center">Order online</p>
       <h2 class="section-title section-title--center">Let's make it yours</h2>
       <p class="order__intro">View the bag, tell me your dream design, upload inspiration, then pay securely. That's it.</p>
+
+      <div id="ordersPausedNote" class="paused-note" hidden>
+        <p class="paused-note__title">Orders are paused for now 🎄</p>
+        <p>I'm busy making bags for the Christmas markets, so I'm not taking online orders at the moment. Follow <a href="https://www.instagram.com/HOOKED.by.LM" target="_blank" rel="noopener">@HOOKED.by.LM</a> on Instagram to be the first to know when orders reopen and to see where I'll be selling.</p>
+      </div>
 
       <form id="orderForm" class="order-card" novalidate>
 
